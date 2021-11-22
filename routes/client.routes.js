@@ -36,29 +36,33 @@ router.post("/", (req, res) => {
 })
 /////////FIN LOGICA SIGNUP/////////////
 /////////LOGICA LOGIN/////////////
-router.get("/client-login", (req, res) => {
-  res.render("authClient/loginClient")
-})
+// router.get("/", (req, res) => {
+//   res.render("index")
+// })
 
-router.post("/client-login", (req, res) => {
+
+
+// LOGIN
+
+router.post("/", (req, res) => {
 
   
 
-    const { username, password } = req.body
+    const { email, password } = req.body
   
     //Buscamos si existe el usuario
-    Client.findOne({ username })
+    Client.findOne({ email })
       .then(user => {
   
         //Si el usuario no existe enviamos error
         if (!user) {
-          res.render('authClient/loginClient', { errorMessage: 'Usuario no reconocido' })
+          res.redirect('/', { errorMessage: 'Usuario no reconocido' })
           return
         }
   
         //Si la contraseña no coincide con el hash enviamos error
         if (bcrypt.compareSync(password, user.password) === false) {
-          res.render('authClient/loginClient', { errorMessage: 'Contraseña incorrecta' })
+          res.render('/', { errorMessage: 'Contraseña incorrecta' })
           return
         }
   
@@ -66,10 +70,25 @@ router.post("/client-login", (req, res) => {
         req.session.currentUser = user
         console.log(req.session)
         ///////////TODO PROFILE CLIENT
-        res.redirect("/client-profile")
+        res.redirect("/dashboard")
       })
       .catch(err => console.log(err))
   })
+
+
+
+  // DASHBOARD CLIENTE
+
+  router.get("/dashboard", (req, res) => {
+    res.render("client/client-dashboard")
+  })
+
+
+
+
+
+
+
   
   
   router.get('/logout', (req, res) => {

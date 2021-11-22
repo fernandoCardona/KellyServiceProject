@@ -1,2 +1,31 @@
-<p>Worker Dashboard</p>
-<a href="/authWorker/worker-profile-edit">Edit Profile</a>
+<section class="dashboard">
+    <nav class="nav-dashboard">
+        <p>Worker Dashboard</p> 
+        <div>
+            <img src="../../public/images/images.png" alt="avatar">
+            <a href="/authWorker/worker-profile-edit">Edit Profile</a>
+            <button class="close-session"></button>
+        </div>
+    </nav>
+    <div class="dashboard-content">
+        <div class="map-active-offerts"></div>
+        <div class="resume-active-offerts">
+            {{!-- for each active oferts
+            {{#each workOfferts}}
+                <a href="/libros/detalles/{{_id}}">
+                   <li>{{title}} escrito por {{author}}</li>
+                </a>
+            {{/each}} --}}
+        </div>
+        <div class="current-offerts">
+            {{!-- for each active oferts
+            {{#each workOfferts}}
+                <a href="/libros/detalles/{{_id}}">
+                   <li>{{title}} escrito por {{author}}</li>
+                </a>
+            {{/each}} --}}
+        </div>
+    </div>
+
+
+</section>

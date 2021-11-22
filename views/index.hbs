@@ -43,27 +43,18 @@
     <form action="/client" method="POST">
 
       <label>
-        <p>Name</p> 
         <input type="text" name="fullName" placeholder="Name" required/>
       </label>
-
       <label> 
-        <p>Email</p>
         <input type="email" name="email" placeholder="Email" required/>
       </label>
-
       <label>
-        <p>Password</p>
         <input type="password" name="password" placeholder="********" required />
       </label>
-
       <label>
-        <p>Address</p> 
         <input type="text" name="address" placeholder="Address" required/>
       </label>
-
       <label>
-        <p>Post Code</p> 
         <input type="number" name="postCode" placeholder="Post code" required/>
       </label>
 
@@ -74,68 +65,90 @@
       {{/if}}
     </form>
     <div class="cont-links">
-      <a href="/client/client-login" class=" "> go to Login</a>
+      <a href="javascript:void(0)" class="login-Client"> go to Login</a>
       <a href="javascript:void(0)" class="btn-Worker">I´m a worker</a> 
     </div>
      
+  </div>
+
+  <div class="login-form-Client">
+    <h2>Login Client</h2>
+    <form action="/client" method="POST">
+      <label>
+        <input type="text" name="username" placeholder="username" />
+      </label>
+      <label>
+        <input type="password" name="password" placeholder="********" />
+      </label>
+      <button type="submit" class="btn" >Login</button>
+      <div class="cont-links">
+        <a href="javascript:void(0)" class="btnNewRegisterClient"> New Registration</a>
+        <a href="javascript:void(0)" class="jumpLoginWorker">login as worker</a> 
+      </div>
+
+    </form>
   </div>
      
   <div class="singup-form-Worker">
     <h2>Worker Signup</h2>
     <form action="/worker" method="POST">
       <label>
-        <p>Name</p> 
         <input type="text" name="fullName" placeholder="Name" required/>
       </label>
-
       <label> 
-        <p>Email</p>
         <input type="email" name="email" placeholder="Email" required/>
       </label>
-
       <label>
-        <p>Password</p>
         <input type="password" name="password" placeholder="********" required/>
       </label>
-
       <label>
-        <p>Address</p> 
         <input type="text" name="address" placeholder="Address" required/>
       </label>
-
       <label>
-        <p>Post Code</p> 
         <input type="number" name="postCode" placeholder="Post code" required/>
       </label>
-
       <div class="worker-checkbox">
-        <p>Servicios:</p>
+        <p><strong>Services offered:</strong></p>
         <label> 
-          <p>Limpieza</p>
-          <input type="checkbox" name="serviceType" value="Limpieza" />
+          <input type="checkbox" name="serviceType" value="Limpieza" /> 
+          <p>Cleaning services</p>
         </label>
-
         <label> 
-          <p>Canguro</p>
           <input type="checkbox" name="serviceType" value="Canguro" />
+          <p>Babysitting services</p>
         </label>
-
         <label> 
-          <p>Jardineria</p>
           <input type="checkbox" name="serviceType" value="Jardineria" />
+          <p>Landscaping services</p>
         </label>
       </div>
-
       <button type="submit" class="btn btn-Client-login" >Signup</button>
-
       {{#if errorMessage}}
         <p class="error">{{errorMessage}}</p>
       {{/if}}
     </form>
     <div class="cont-links">
-      <a href="/worker/worker-login" class=""> go to Login</a>
+      <a href="javascript:void(0)" class="login-Worker"> go to Login</a>
       <a href="javascript:void(0)" class="btn-Client">I´m a Client</a> 
     </div>
+  </div>
+
+  <div class="login-form-Worker">
+    <h2>Login Worker</h2>
+    <form action="/worker" method="POST">
+      <label>
+        <input type="text" name="username" placeholder="username" />
+      </label>
+      <label>
+        <input type="password" name="password" placeholder="********" />
+      </label>
+      <button type="submit" class="btn">Login</button>
+      <div class="cont-links">
+        <a href="javascript:void(0)" class="btnNewRegisterWorker"> New Registration</a>
+        <a href="javascript:void(0)" class="jumpLoginClient">login as Client</a> 
+      </div>
+
+    </form>
   </div>
   
  

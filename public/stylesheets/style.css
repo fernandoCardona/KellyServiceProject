@@ -238,8 +238,8 @@ main {
     align-items: center;
 }
 
-.singup-form-Client,
-.singup-form-Worker {
+.singup-form-Client, .login-form-Client,
+.singup-form-Worker, .login-form-Worker {
     width: 50%;
     display: flex;
     position: relative;
@@ -255,13 +255,13 @@ main {
     box-shadow: 0px 6px 25px 6px rgba(178,178,178,0.7);
     opacity: 1;
 }
-.singup-form-Worker {
+.singup-form-Worker, .login-form-Worker, .login-form-Client {
     display:none;
     opacity: 0;
     
 }
-.singup-form-Client form,
-.singup-form-Worker form {
+.singup-form-Client form, .login-form-Client form,
+.singup-form-Worker form, .login-form-Worker form {
     width: 100%;
     position: relative;
     display:flex;
@@ -271,24 +271,24 @@ main {
     gap:  5px;
     
 }
-.singup-form-Client label,
-.singup-form-Worker label {
+.singup-form-Client label, .login-form-Client label,
+.singup-form-Worker label, .login-form-Worker label {
     width: 100%;
      
 }
-.singup-form-Client label p,
-.singup-form-Worker label p {
+.singup-form-Client label p, .login-form-Client label p,
+.singup-form-Worker label p, .login-form-Worker label p {
     margin-bottom: 5px;
 }
-.singup-form-Client form input,
-.singup-form-Worker form input {
+.singup-form-Client form input, .login-form-Client form input,
+.singup-form-Worker form input, .login-form-Worker form input {
     width: -webkit-fill-available;
     height: 30px;
     border-radius: 3px;
     padding: 5px 10px;
 }
  
- .cont-links {
+.cont-links {
      width: 100%;
      display: flex;flex-direction: row;
      justify-content: space-around;
@@ -308,6 +308,54 @@ main {
     margin: 20px 0px;
     
 }
+.worker-checkbox  {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+}
+.worker-checkbox p {
+    margin-bottom:0px;
+    padding: 0px;
+}
+.worker-checkbox label {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+.worker-checkbox label p {
+    width: auto;
+    height: 20px;
+    margin:0px;
+    padding: 0px;
+    display: inline-block;
+}
+.worker-checkbox label input {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+}
+input[type="checkbox"]:before {
+    content: "";
+     
+    width: 20px;
+    height: 20px;
+    background-color: #00B7FF;
+    
+}
+input[type="checkbox"]:after {
+    content: "";
+     
+    width: 20px;
+    height: 20px;
+    background-color: #00B7FF;
+     
+}
+
 /* .btn:hover {
 
 } */
