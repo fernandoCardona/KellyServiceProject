@@ -57,6 +57,16 @@
         <input type="password" name="password" placeholder="********" required />
       </label>
 
+      <label>
+        <p>Address</p> 
+        <input type="text" name="address" placeholder="Address" required/>
+      </label>
+
+      <label>
+        <p>Post Code</p> 
+        <input type="number" name="postCode" placeholder="Post code" required/>
+      </label>
+
       <button type="submit" class="btn btn-Client-login">Signup</button>
 
       {{#if errorMessage}}
@@ -88,18 +98,31 @@
         <input type="password" name="password" placeholder="********" required/>
       </label>
 
+      <label>
+        <p>Address</p> 
+        <input type="text" name="address" placeholder="Address" required/>
+      </label>
+
+      <label>
+        <p>Post Code</p> 
+        <input type="number" name="postCode" placeholder="Post code" required/>
+      </label>
+
       <div class="worker-checkbox">
         <p>Servicios:</p>
-        <label> <p>Limpieza</p>
-        <input type="checkbox" name="serviceType" value="Limpieza" />
+        <label> 
+          <p>Limpieza</p>
+          <input type="checkbox" name="serviceType" value="Limpieza" />
         </label>
 
-        <label> <p>Canguro</p>
-        <input type="checkbox" name="serviceType" value="Canguro" />
+        <label> 
+          <p>Canguro</p>
+          <input type="checkbox" name="serviceType" value="Canguro" />
         </label>
 
-        <label> <p>Jardineria</p>
-        <input type="checkbox" name="serviceType" value="Jardineria" />
+        <label> 
+          <p>Jardineria</p>
+          <input type="checkbox" name="serviceType" value="Jardineria" />
         </label>
       </div>
 

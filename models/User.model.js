@@ -16,7 +16,7 @@ const userSchema = new Schema({
     enum: ['Client', 'Worker']
   },
   price: Number,
-  image: String //poner imagen default
+  image: {type :String, default:'../public/images/images.png'} //poner imagen default
 });
 
 const User = model("User", userSchema);
