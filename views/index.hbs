@@ -6,7 +6,7 @@
   <a href="/authWorker/worker-login">Login</a>
 </section> --}}
 <nav class="main-Home-nav">
-  <div><p class="logoHome">KellySercices</p></div>
+  <div> <a href="/"><p class="logoHome">KellyServices</p></a></div>
   <div class="menu">
     <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="34px" height="34px"fill="white" viewBox="0 0 612 612" style="enable-background:new 0 0 612 612;" xml:space="preserve">
@@ -24,9 +24,9 @@
   </div>
   <ul>
     
-    <li><a href="#">Home</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="#">Contact</a></li>
+    <li><a href="/">Home</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/contact">Contact</a></li>
   </ul>
 </nav>  
 <main>
@@ -40,21 +40,21 @@
 <section class="homeForms">
   <div class="singup-form-Client ">
     <h2>Client Signup</h2>
-    <form action="/authClient/client-signup" method="POST">
+    <form action="/client" method="POST">
 
       <label>
-        <p>Username</p> 
-        <input type="text" name="username" placeholder="Username" />
+        <p>Name</p> 
+        <input type="text" name="fullName" placeholder="Name" required/>
       </label>
 
       <label> 
         <p>Email</p>
-        <input type="email" name="email" placeholder="Email"/>
+        <input type="email" name="email" placeholder="Email" required/>
       </label>
 
       <label>
         <p>Password</p>
-        <input type="password" name="password" placeholder="********" />
+        <input type="password" name="password" placeholder="********" required />
       </label>
 
       <button type="submit" class="btn btn-Client-login">Signup</button>
@@ -64,29 +64,44 @@
       {{/if}}
     </form>
     <div class="cont-links">
-      <a href="/authClient/client-login" class=" "> go to Login</a>
-      <a href="#" class="btn-Worker">I´m a worker</a> 
+      <a href="/client/client-login" class=" "> go to Login</a>
+      <a href="javascript:void(0)" class="btn-Worker">I´m a worker</a> 
     </div>
      
   </div>
      
   <div class="singup-form-Worker">
     <h2>Worker Signup</h2>
-    <form action="/authWorker/worker-signup" method="POST">
+    <form action="/worker" method="POST">
       <label>
-        <p>Username</p> 
-        <input type="text" name="username" placeholder="Username" />
+        <p>Name</p> 
+        <input type="text" name="fullName" placeholder="Name" required/>
       </label>
 
       <label> 
         <p>Email</p>
-        <input type="email" name="email" placeholder="Email"/>
+        <input type="email" name="email" placeholder="Email" required/>
       </label>
 
       <label>
         <p>Password</p>
-        <input type="password" name="password" placeholder="********" />
+        <input type="password" name="password" placeholder="********" required/>
       </label>
+
+      <div class="worker-checkbox">
+        <p>Servicios:</p>
+        <label> <p>Limpieza</p>
+        <input type="checkbox" name="serviceType" value="Limpieza" />
+        </label>
+
+        <label> <p>Canguro</p>
+        <input type="checkbox" name="serviceType" value="Canguro" />
+        </label>
+
+        <label> <p>Jardineria</p>
+        <input type="checkbox" name="serviceType" value="Jardineria" />
+        </label>
+      </div>
 
       <button type="submit" class="btn btn-Client-login" >Signup</button>
 
@@ -95,8 +110,8 @@
       {{/if}}
     </form>
     <div class="cont-links">
-      <a href="/authWorker/worker-login" class=""> go to Login</a>
-      <a href="#" class="btn-Client">I´m a Client</a> 
+      <a href="/worker/worker-login" class=""> go to Login</a>
+      <a href="javascript:void(0)" class="btn-Client">I´m a Client</a> 
     </div>
   </div>
   

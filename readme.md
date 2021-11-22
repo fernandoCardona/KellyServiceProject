@@ -6,10 +6,8 @@ get   --------  /  -------- Index
 
 --------- CLIENT ---------------------------
 _____________________________________________
-get   -------- /authClient/client-login --------- muestra el formulario para el login del cliente
-post  -------- /authClient/client-login --------- guarda la información del login del cliente
-get   -------- /authClient/client-signup -------- muestra el formulario para registrar al cliente
-post  -------- /authClient/client-signup -------- guarda al cliente en la bbdd
+post  -------- / --------- guarda la información del login del cliente
+post  -------- / -------- guarda al cliente en la bbdd
 get   -------- /dashBoard/client         -------- muestra el dashboard del cliente :
               - Informacion del Cliente
               - Boton editar Client Profile
@@ -33,10 +31,8 @@ get   -------- /dashBoard/client/current-services    --- - Lista de servicios ac
 
 --------- WORKER ---------------------------
 _____________________________________________
-get   -------- /authWorker/worker-login --------- muestra el formulario para el login del trabajador
-post  -------- /authWorker/worker-login --------- guarda la información del login del trabajador
-get   -------- /authWorker/worker-signup -------- muestra el formulario para registrar al trabajador
-post  -------- /authWorker/worker-signup -------- guarda al trabajador en la bbdd
+post  -------- / --------- guarda la información del login del trabajador
+post  -------- / -------- guarda al trabajador en la bbdd
 get   -------- /dashBoard/worker         -------- muestra el dashboard del trabajador:
               - Informacion del trabajador
               - Boton editar Worker Profile

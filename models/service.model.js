@@ -7,19 +7,18 @@ const serviceSchema = new Schema(
     description: String,
     serviceType:{
       type: String,
-      enum: [String],
-      default: String,
+      enum: ['Limpieza', 'Canguro', 'Jardinería']
     },
-    client: [{ type: Schema.Types.ObjectId, ref: 'Client' }],
-    worker: [{ type: Schema.Types.ObjectId, ref: 'Worker' }],
-    reviews: [
-      {
-        user: String,
-        comments: String
-      }
-    ],
-    rating: Number,
-    price: Number
+    candidates: [{ type: Schema.Types.ObjectId, ref: 'Worker' }],
+    client: { type: Schema.Types.ObjectId, ref: 'Client' },
+    worker: { type: Schema.Types.ObjectId, ref: 'Worker' },
+    
+    status: {
+      type: String,
+      enum: ['Pending', 'Completed']
+    },
+ 
+    
   },
   {
     timestamps: true
