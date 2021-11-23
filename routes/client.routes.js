@@ -48,7 +48,7 @@ router.post("/", (req, res) => {
 
 router.get("/dashboard", (req, res) => {
   const currentUser = req.session.currentUser;
-  res.render("client/client-dashboard" , currentUser)
+  res.render("client/client-dashboard" , currentUser);  
 })
 
 router.post("/login", (req, res) => {
