@@ -70,7 +70,7 @@ router.post("/", (req, res) => {
         req.session.currentUser = user
         console.log(req.session)
         ///////////TODO PROFILE CLIENT
-        res.redirect("/dashboard")
+        res.render("client/client-dashboard")
       })
       .catch(err => console.log(err))
   })
@@ -81,10 +81,8 @@ router.post("/", (req, res) => {
 
   router.get("/dashboard", (req, res) => {
     res.render("client/client-dashboard")
+    console.log('--------------------------------')
   })
-
-
-
 
 
 
