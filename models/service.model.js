@@ -9,9 +9,9 @@ const serviceSchema = new Schema(
       type: String,
       enum: ['Limpieza', 'Canguro', 'Jardinería']
     },
-    candidates: [{ type: Schema.Types.ObjectId, ref: 'Worker' }],
-    client: { type: Schema.Types.ObjectId, ref: 'Client' },
-    worker: { type: Schema.Types.ObjectId, ref: 'Worker' },
+    candidates: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+    client: { type: Schema.Types.ObjectId, ref: 'User' },
+    worker: { type: Schema.Types.ObjectId, ref: 'User' },
     
     status: {
       type: String,

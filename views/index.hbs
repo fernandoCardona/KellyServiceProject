@@ -55,10 +55,10 @@
         <input type="text" name="address" placeholder="Address" required/>
       </label>
       <label>
-        <input type="number" name="postCode" placeholder="Post code" required/>
+        <input type="number" name="postcode" placeholder="Post code" required/>
       </label>
 
-      <button type="submit" class="btn btn-Client-login">Signup</button>
+      <button type="submit" id="btn-singup-Client" class="btn btn-Client-login">Signup</button>
 
       {{#if errorMessage}}
         <p class="error">{{errorMessage}}</p>
@@ -73,14 +73,14 @@
 
   <div class="login-form-Client">
     <h2>Login Client</h2>
-    <form action="/client" method="POST">
+    <form action="/client/login" method="POST">
       <label>
-        <input type="text" name="username" placeholder="username" />
+        <input type="email" name="email" placeholder="email" required/>
       </label>
       <label>
         <input type="password" name="password" placeholder="********" />
       </label>
-      <button type="submit" class="btn" >Login</button>
+      <button type="submit" id="entrarDashBoardCliente" class="btn" >Login</button>
       <div class="cont-links">
         <a href="javascript:void(0)" class="btnNewRegisterClient"> New Registration</a>
         <a href="javascript:void(0)" class="jumpLoginWorker">login as worker</a> 
@@ -105,7 +105,7 @@
         <input type="text" name="address" placeholder="Address" required/>
       </label>
       <label>
-        <input type="number" name="postCode" placeholder="Post code" required/>
+        <input type="number" name="postcode" placeholder="Post code" required/>
       </label>
       <div class="worker-checkbox">
         <p><strong>Services offered:</strong></p>
@@ -122,7 +122,7 @@
           <p>Landscaping services</p>
         </label>
       </div>
-      <button type="submit" class="btn btn-Client-login" >Signup</button>
+      <button type="submit" id="btn-singup-worker" class="btn btn-Client-login" >Signup</button>
       {{#if errorMessage}}
         <p class="error">{{errorMessage}}</p>
       {{/if}}
@@ -135,14 +135,14 @@
 
   <div class="login-form-Worker">
     <h2>Login Worker</h2>
-    <form action="/worker" method="POST">
+    <form action="/worker/login" method="POST">
       <label>
-        <input type="text" name="username" placeholder="username" />
+        <input type="email" name="email" placeholder="email" required/>
       </label>
       <label>
         <input type="password" name="password" placeholder="********" />
       </label>
-      <button type="submit" class="btn">Login</button>
+      <button type="submit" id="entrarDashBoardWorker" class="btn">Login</button>
       <div class="cont-links">
         <a href="javascript:void(0)" class="btnNewRegisterWorker"> New Registration</a>
         <a href="javascript:void(0)" class="jumpLoginClient">login as Client</a> 

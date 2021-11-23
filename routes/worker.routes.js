@@ -1,14 +1,16 @@
 const router = require("express").Router();
 const Worker = require("../models/User.model")
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcrypt");
+const { restart } = require("nodemon");
 
 
 ////LOGICA DE SIGNUP///////
 router.post("/", (req, res) => {
 
-  const { fullName, email, password, role } = req.body
-
-  //Comprobamos si existe el usuario
+  const { fullName, email, password, role, address, postcode, serviceType } = req.body
+  console.log("sagdjhasgdja");
+  //res.json(req.body);
+  
   Worker.find({ email })
     .then(user => {
 
@@ -24,7 +26,7 @@ router.post("/", (req, res) => {
         const hashPass = bcrypt.hashSync(password, salt)
 
 
-        Worker.create({ fullName, email, role: 'Worker', password: hashPass })
+        Worker.create({ fullName, email, role: 'Worker', password: hashPass, address, postcode, serviceType })
           .then(createdUser => res.redirect("/"))
           .catch(err => console.log(err))
       }
@@ -38,9 +40,17 @@ router.post("/", (req, res) => {
 //   // res.render("worker/loginWorker")
 // })
 
-router.post("/", (req, res) => {
+//LOGIN
+ // DASHBOARD WORKER
 
-  
+router.get("/dashboard", (req, res) => {
+
+  const currentUser = req.session.currentUser;
+
+  res.render("worker/worker-dashboard", currentUser)
+})
+
+router.post("/login", (req, res) => {
 
     const { email, password } = req.body
   
@@ -64,21 +74,13 @@ router.post("/", (req, res) => {
         req.session.currentUser = user
         console.log(req.session)
     /////////////// TODO PROFILE WORKER
-        res.redirect("/dashboard")
+        res.redirect("/worker/dashboard")
       })
       .catch(err => console.log(err))
   })
 
 
-  // DASHBOARD WORKER
-
-  router.get("/dashboard", (req, res) => {
-    res.render("worker/worker-dashboard")
-  })
-
-
-
-  
+ 
   
   router.get('/logout', (req, res) => {
     req.session.destroy(() => res.redirect('/'))

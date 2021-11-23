@@ -2,9 +2,7 @@ document.addEventListener(
   "DOMContentLoaded",
   () => {
     console.log("lab-express-basic-auth JS imported successfully!");
-  },
-  false
-);
+
 /////////////////////HOME MENU DESPLEGABLE////////////////////////////
 const ham = document.querySelector(".menu");
 const menu = document.querySelector('.main-Home-nav ul');
@@ -48,6 +46,9 @@ const jumpLoginClient = document.querySelector('.jumpLoginClient');
 const jumpLoginWorker = document.querySelector('.jumpLoginWorker');
 const formLoginClient = document.querySelector('.login-form-Client');
 const formLoginWorker = document.querySelector('.login-form-Worker');
+
+const btnSingupClient = document.querySelector('#btn-singup-Client');
+const btnSingupWorker = document.querySelector('#btn-singup-worker');
 //Register loginClient a Register loginWorker
 btnWorker.addEventListener('click', () => {
     TweenMax.set(formLoginClient,{opacity:0,display:"none"});
@@ -131,4 +132,77 @@ jumpLoginClient.addEventListener('click', () => {
             .to(formLoginWorker,0.3, {opacity:0, display:"none"})
             .to(formLoginClient,1, {opacity:1, display:"flex"});
 });
+//btn singupClient a loginClient
+btnSingupClient.addEventListener('click', (e) => {
+    e.preventDefault();
+    
+    const inputs = document.querySelectorAll(".singup-form-Client  input")
+    
+    const body = [...inputs].reduce((acc, input) => {
+        acc[input.name] = input.value
+        return acc
+    } , {})
+
+    console.log(body)
+    
+    axios.post("/client", body)
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
+
+
+    TweenMax.set(formWorker,{opacity:0,display:"none"});
+    TweenMax.set(formLoginWorker,{opacity:0,display:"none"});
+    TweenMax.set(formLoginClient,{opacity:0,display:"none"});
+        
+        gsap.timeline()
+            .to(formClient,0.3, {opacity:0, display:"none"})
+            .to(formLoginClient,1, {opacity:1, display:"flex"});	 
+});
+//btn singupWorker a loginWorker
+btnSingupWorker.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    const inputs = document.querySelectorAll(".singup-form-Worker input");
+
+    
+    const body = [...inputs].reduce((acc, input) => {
+        if(input.name === "serviceType") {
+            input.checked ? acc.serviceType.push(input.value) : null
+            return acc
+        }
+        const key = input.name
+        acc[key] = input.value
+        return acc
+
+    } , { serviceType: [] });
+
+    console.log("consolelooog", body);
+    
+    axios.post("/worker", body)
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
+
+    TweenMax.set(formClient,{opacity:0,display:"none"});
+    TweenMax.set(formLoginClient,{opacity:0,display:"none"});
+    TweenMax.set(formLoginWorker,{opacity:0,display:"none"});
+        
+        gsap.timeline()
+            .to(formWorker,0.3, {opacity:0, display:"none"})
+            .to(formLoginWorker,1, {opacity:1, display:"flex"});	 
+});
+
+const entrarDashBoardCliente = document.querySelector('#entrarDashBoardCliente');
+const entrarDashBoardWorker = document.querySelector('#entrarDashBoardWorker');
+entrarDashBoardCliente.addEventListener('click', (e) => {
+    // e.preventDefault();       
+});
+
+entrarDashBoardWorker.addEventListener('click', (e) => {
+    // e.preventDefault(); 
+});
+
+
 /////////////////////FIN TYPE FORM SELECTION////////////////////////////
+},
+false
+);

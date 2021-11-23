@@ -2,12 +2,12 @@ const { Schema, model } = require("mongoose");
 
 
 const reviewSchema = new Schema({
-    reviews: [{
-        type: String,
-        comments: String,
+    
+    
+        comment: String,
         rating: Number,
 
-    }],
+    
     service: { type: Schema.Types.ObjectId, ref: 'Service' }
 });
 

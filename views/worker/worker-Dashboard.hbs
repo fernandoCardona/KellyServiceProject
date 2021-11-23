@@ -1,12 +1,13 @@
 <section class="dashboard">
     <nav class="nav-dashboard">
-        <p>Worker Dashboard</p> 
+        <p>{{fullName}} Dashboard Worker</p> 
         <div>
-            <img src="../../public/images/images.png" alt="avatar">
+            <span><img src="/images/avatar.png" alt="avatar"></span>
             <a href="/authWorker/worker-profile-edit">Edit Profile</a>
-            <button class="close-session"></button>
+            <button class="close-session">log out</button>
         </div>
     </nav>
+    <div id="map"></div>
     <div class="dashboard-content">
         <div class="map-active-offerts"></div>
         <div class="resume-active-offerts">

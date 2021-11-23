@@ -7,7 +7,7 @@ const bcrypt = require("bcrypt")
 
 router.post("/", (req, res) => {
 
-  const { fullName, email, password, role } = req.body
+  const { fullName, email, password, role, address, postcode} = req.body
 
   //Comprobamos si existe el usuario
   Client.find({ email })
@@ -25,7 +25,7 @@ router.post("/", (req, res) => {
         const hashPass = bcrypt.hashSync(password, salt)
 
 
-        Client.create({ fullName, email, role: 'Client', password: hashPass })
+        Client.create({ fullName, email, role: 'Client', password: hashPass, address, postcode})
           .then(createdUser => res.redirect("/"))
           .catch(err => console.log(err))
       }
@@ -44,7 +44,14 @@ router.post("/", (req, res) => {
 
 // LOGIN
 
-router.post("/", (req, res) => {
+// DASHBOARD CLIENTE
+
+router.get("/dashboard", (req, res) => {
+  const currentUser = req.session.currentUser;
+  res.render("client/client-dashboard" , currentUser)
+})
+
+router.post("/login", (req, res) => {
 
   
 
@@ -56,13 +63,13 @@ router.post("/", (req, res) => {
   
         //Si el usuario no existe enviamos error
         if (!user) {
-          res.redirect('/', { errorMessage: 'Usuario no reconocido' })
+          res.render('index', { errorMessage: 'Usuario no reconocido' })
           return
         }
   
         //Si la contraseña no coincide con el hash enviamos error
         if (bcrypt.compareSync(password, user.password) === false) {
-          res.render('/', { errorMessage: 'Contraseña incorrecta' })
+          res.render('index', { errorMessage: 'Contraseña incorrecta' })
           return
         }
   
@@ -70,26 +77,11 @@ router.post("/", (req, res) => {
         req.session.currentUser = user
         console.log(req.session)
         ///////////TODO PROFILE CLIENT
-        res.redirect("/dashboard")
+        res.redirect("/client/dashboard")
       })
       .catch(err => console.log(err))
   })
 
-
-
-  // DASHBOARD CLIENTE
-
-  router.get("/dashboard", (req, res) => {
-    res.render("client/client-dashboard")
-  })
-
-
-
-
-
-
-
-  
   
   router.get('/logout', (req, res) => {
     req.session.destroy(() => res.redirect('/'))
