@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt")
 
 // router.get("/client-signup", (req, res) => res.render("authClient/signupClient"))
 
-router.post("/", (req, res) => {
+router.post("/signup", (req, res) => {
 
   const { fullName, email, password, role } = req.body
 
@@ -44,54 +44,54 @@ router.post("/", (req, res) => {
 
 // LOGIN
 
-router.post("/", (req, res) => {
-
-  
-
-    const { email, password } = req.body
-  
-    //Buscamos si existe el usuario
-    Client.findOne({ email })
-      .then(user => {
-  
-        //Si el usuario no existe enviamos error
-        if (!user) {
-          res.redirect('/', { errorMessage: 'Usuario no reconocido' })
-          return
-        }
-  
-        //Si la contraseña no coincide con el hash enviamos error
-        if (bcrypt.compareSync(password, user.password) === false) {
-          res.render('/', { errorMessage: 'Contraseña incorrecta' })
-          return
-        }
-  
-        //5. Enganchar el objeto de usuario al req.session
-        req.session.currentUser = user
-        console.log(req.session)
-        ///////////TODO PROFILE CLIENT
-        res.render("client/client-dashboard")
-      })
-      .catch(err => console.log(err))
-  })
+router.post("/login", (req, res) => {
 
 
 
-  // DASHBOARD CLIENTE
+  const { email, password } = req.body
 
-  router.get("/dashboard", (req, res) => {
-    res.render("client/client-dashboard")
-    console.log('--------------------------------')
-  })
+  //Buscamos si existe el usuario
+  Client.findOne({ email })
+    .then(user => {
+
+      //Si el usuario no existe enviamos error
+      if (!user) {
+        res.redirect('/', { errorMessage: 'Usuario no reconocido' })
+        return
+      }
+
+      //Si la contraseña no coincide con el hash enviamos error
+      if (bcrypt.compareSync(password, user.password) === false) {
+        res.render('/', { errorMessage: 'Contraseña incorrecta' })
+        return
+      }
+
+      //5. Enganchar el objeto de usuario al req.session
+      req.session.currentUser = user
+      console.log(req.session)
+      ///////////TODO PROFILE CLIENT
+      res.redirect("/client/dashboard")
+    })
+    .catch(err => console.log(err))
+})
+
+
+
+// DASHBOARD CLIENTE
+
+router.get("/dashboard", (req, res) => {
+  res.render("client/client-dashboard")
+  console.log('--------------------------------')
+})
 
 
 
 
-  
-  
-  router.get('/logout', (req, res) => {
-    req.session.destroy(() => res.redirect('/'))
-  })
+
+
+router.get('/logout', (req, res) => {
+  req.session.destroy(() => res.redirect('/'))
+})
 
 
 /////////LOGICA LOGIN/////////////

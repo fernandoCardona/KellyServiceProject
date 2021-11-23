@@ -17,6 +17,11 @@ const userSchema = new Schema({
   },
   price: Number,
   image: {type :String, default:'../public/images/images.png'} //poner imagen default
+},
+
+{
+  timestamps: true
+
 });
 
 const User = model("User", userSchema);

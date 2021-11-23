@@ -1,0 +1,30 @@
+<h1>My services</h1>
+
+
+<a href="/services/new">Crear servicio</a>
+
+<ul>
+    {{#each myServices }}
+    <ul>
+        Titulo: {{title}}
+        <br>
+        Descripcion: {{description}}
+        <br>
+        Direccion: {{address}}
+        <br>
+        Codigo postal: {{postcode}}
+        <br>
+        Tipo de servicio: {{serviceType}}
+        <br>
+        Cliente: {{client.fullName}}
+        <br>
+        Candidatos: {{candidates.0.fullName}}
+        <br>
+        Trabajador: {{worker}}
+        <br>
+        Estado del servicio: {{status}}
+        <br>
+    </ul>
+    <br>
+    {{/each}}
+</ul>

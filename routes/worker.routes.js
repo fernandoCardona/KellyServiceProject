@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt")
 
 
 ////LOGICA DE SIGNUP///////
-router.post("/", (req, res) => {
+router.post("/signup", (req, res) => {
 
   const { fullName, email, password, role } = req.body
 
@@ -38,7 +38,7 @@ router.post("/", (req, res) => {
 //   // res.render("worker/loginWorker")
 // })
 
-router.post("/", (req, res) => {
+router.post("/login", (req, res) => {
 
   
 
@@ -64,7 +64,7 @@ router.post("/", (req, res) => {
         req.session.currentUser = user
         console.log(req.session)
     /////////////// TODO PROFILE WORKER
-        res.redirect("/dashboard")
+        res.redirect("/worker/dashboard")
       })
       .catch(err => console.log(err))
   })

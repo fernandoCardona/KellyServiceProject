@@ -3,22 +3,27 @@ const { Schema, model } = require("mongoose");
 // TODO: Please make sure you edit the user model to whatever makes sense in this case
 const serviceSchema = new Schema(
   {
-    title: String,
-    description: String,
-    serviceType:{
+    title: {type: String, required: true},
+    description: {type: String, required: true},
+    address: {type: String, required: true},
+    postcode: {type: Number, required: true},
+    serviceType: {
       type: String,
-      enum: ['Limpieza', 'Canguro', 'Jardinería']
+      enum: ['Limpieza', 'Canguro', 'Jardineria'],
+      required: true
     },
-    candidates: [{ type: Schema.Types.ObjectId, ref: 'Worker' }],
-    client: { type: Schema.Types.ObjectId, ref: 'Client' },
-    worker: { type: Schema.Types.ObjectId, ref: 'Worker' },
-    
+    candidates: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+    client: { type: Schema.Types.ObjectId, ref: 'User' },
+    worker: { type: Schema.Types.ObjectId, ref: 'User' },
+
     status: {
       type: String,
-      enum: ['Pending', 'Completed']
+      enum: ['Pending', 'Completed'],
+      default: 'Pending',
+      required: true
     },
- 
-    
+
+
   },
   {
     timestamps: true
