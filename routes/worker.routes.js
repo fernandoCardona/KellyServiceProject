@@ -3,7 +3,8 @@ const Worker = require("../models/User.model")
 const bcrypt = require("bcrypt")
 
 
-////LOGICA DE SIGNUP///////
+// SIGNUP
+
 router.post("/signup", (req, res) => {
 
   const { fullName, email, password, role } = req.body
@@ -32,15 +33,12 @@ router.post("/signup", (req, res) => {
     })
     .catch(err => console.log(err))
 })
-/////////FIN LOGICA SIGNUP/////////////
-/////////LOGICA LOGIN/////////////
-// router.get("/worker-login", (req, res) => {
-//   // res.render("worker/loginWorker")
-// })
+
+
+
+// LOGIN
 
 router.post("/login", (req, res) => {
-
-  
 
     const { email, password } = req.body
   
@@ -62,29 +60,30 @@ router.post("/login", (req, res) => {
   
         //5. Enganchar el objeto de usuario al req.session
         req.session.currentUser = user
-        console.log(req.session)
-    /////////////// TODO PROFILE WORKER
+
         res.redirect("/worker/dashboard")
       })
       .catch(err => console.log(err))
   })
 
 
-  // DASHBOARD WORKER
-
-  router.get("/dashboard", (req, res) => {
-    res.render("worker/worker-dashboard")
-  })
-
-
-
-  
+  //  LOGOUT
   
   router.get('/logout', (req, res) => {
     req.session.destroy(() => res.redirect('/'))
   })
 
 
-/////////LOGICA LOGIN/////////////
+
+// ----------------------------------------------------------------------------------------------------//
+
+
+
+// DASHBOARD WORKER
+
+router.get("/dashboard", (req, res) => {
+  res.render("worker/worker-dashboard")
+})
+
 
 module.exports = router;

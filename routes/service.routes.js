@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { findByIdAndUpdate } = require("../models/Service.model");
 const Service = require("../models/Service.model")
 const User = require("../models/User.model")
 
@@ -19,25 +20,44 @@ router.get("/", (req, res) => {
 })
 
 
-// servicio por :id
-//SE ACEPTA UN SERVICIO
-// editar servicio añadiendo como worker el usuario logueado
 
-//Completa un servicio
-// pasar status a Completed
-
-// LISTA PROPIA DE SERVICIOS CREADOS
+// [CLIENTE] LISTA PROPIA DE SERVICIOS CREADOS 
 
 router.get("/my-services", (req, res) => {
 
-    // const currentUser = req.session.currentUser
-    // const id = currentUser._id
+    const currentUser = req.session.currentUser
+    const id = currentUser._id
 
-    Service.find()
-        .then(myServices => res.render('client/client-services', {myServices}) )
+    Service.find({ client: id })
+        .populate('client worker candidates')
+        .then(myServices => res.render('client/client-services', { myServices }))
         .catch(err => console.log(err))
 
 })
+
+
+
+// [TRABAJADOR] LISTA PROPIA DE SERVICIOS APLICADOS
+
+router.get("/applied-services", (req, res) => {
+
+    const currentUser = req.session.currentUser
+    const id = currentUser._id
+
+    Service.find({ candidates: [id] })
+        .populate('client worker candidates')
+        .then(appliedServices => res.render('worker/worker-services', { appliedServices }))
+        .catch(err => console.log(err))
+
+})
+
+
+
+
+
+
+
+
 
 
 
@@ -45,7 +65,7 @@ router.get("/my-services", (req, res) => {
 
 router.get("/details/:id", (req, res) => {
 
-    const { id } = req.params   
+    const { id } = req.params
 
     Service.findById(id)
         .populate('client worker candidates')
@@ -57,8 +77,11 @@ router.get("/details/:id", (req, res) => {
 
 
 
-// CREACION DE SERVICIO
 
+
+
+
+// CREACION DE SERVICIO
 
 router.get('/new', (req, res) => {
 
@@ -68,7 +91,6 @@ router.get('/new', (req, res) => {
         })
         .catch(err => console.log(err))
 })
-
 
 
 router.post('/new', (req, res) => {
@@ -82,7 +104,6 @@ router.post('/new', (req, res) => {
         .then(newService => res.redirect("/services"))
         .catch(err => console.log(err))
 })
-
 
 
 
@@ -112,17 +133,69 @@ router.get("/edit", (req, res) => {
 router.post("/edit", (req, res) => {
 
     const { id } = req.query
-    console.log(id)
     const { title, description, address, postcode, serviceType, candidates, client, worker, status } = req.body
 
     Service.findByIdAndUpdate(id, { title, description, address, postcode, serviceType, candidates, client, worker, status }, { new: true })
         .then(updatedService => {
-            res.redirect("/services")
+            res.redirect("/services/my-services")
         })
         .catch(err => console.log(err))
 
 
 })
+
+
+
+// APPLY TRABAJADOR
+
+// Para añadir trabajador al array de candidatos (pushear)
+// findByIdAndUpdate(ID, {$push: {field: value}})
+router.post("/apply", (req, res) => {
+
+    const currentUser = req.session.currentUser
+    const userId = currentUser._id
+
+    const { id } = req.query
+    const { candidates } = req.body
+
+    Service.findByIdAndUpdate(id, { $push: { candidates: userId } }, { new: true })
+        .populate("candidates")
+        .then(newCandidate => res.redirect(`/services/details/${id}`))
+        .catch(err => console.log(err))
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// DELETE SERVICE
+
+router.get("/delete", (req, res) => {
+    const { id } = req.query
+
+    Service.findByIdAndDelete(id)
+        .then(info => res.redirect("/services"))
+        .catch(err => console.log(err))
+
+})
+
+
+
+
+
+
+
+
 
 
 

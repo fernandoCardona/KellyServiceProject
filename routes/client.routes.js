@@ -1,9 +1,9 @@
 const router = require("express").Router();
 const Client = require("../models/User.model")
 const bcrypt = require("bcrypt")
-////LOGICA DE SIGNUP////////
 
-// router.get("/client-signup", (req, res) => res.render("authClient/signupClient"))
+
+// SIGNUP
 
 router.post("/signup", (req, res) => {
 
@@ -34,19 +34,12 @@ router.post("/signup", (req, res) => {
     .catch(err => console.log(err))
 
 })
-/////////FIN LOGICA SIGNUP/////////////
-/////////LOGICA LOGIN/////////////
-// router.get("/", (req, res) => {
-//   res.render("index")
-// })
 
 
 
 // LOGIN
 
 router.post("/login", (req, res) => {
-
-
 
   const { email, password } = req.body
 
@@ -76,24 +69,22 @@ router.post("/login", (req, res) => {
 })
 
 
-
-// DASHBOARD CLIENTE
-
-router.get("/dashboard", (req, res) => {
-  res.render("client/client-dashboard")
-  console.log('--------------------------------')
-})
-
-
-
-
-
+// LOGOUT
 
 router.get('/logout', (req, res) => {
   req.session.destroy(() => res.redirect('/'))
 })
 
 
-/////////LOGICA LOGIN/////////////
+// ----------------------------------------------------------------------------------------------------//
+
+
+
+// DASHBOARD CLIENTE
+
+router.get("/dashboard", (req, res) => res.render("client/client-dashboard"))
+
+
+
 
 module.exports = router;

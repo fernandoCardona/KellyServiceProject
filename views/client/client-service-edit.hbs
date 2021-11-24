@@ -1,7 +1,12 @@
 <h1>service edit</h1>
 
-<form action="/services/edit?id={{id}}" method="POST">
+<a href="/services">Volver a la lista de servicios</a>
+<br>
+<a href="/services/my-services">Volver a mis servicios</a>
+
 {{#with service}}
+<form action="/services/edit?id={{id}}" method="POST">
+
     <label> Titulo:
         <input name="title" value="{{title}}" type="text" >
     </label>

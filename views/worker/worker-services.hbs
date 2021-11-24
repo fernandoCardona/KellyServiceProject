@@ -2,12 +2,9 @@
 
 <a href="/services">Volver a la lista de servicios</a>
 <br>
-<a href="/services/new">Crear servicio</a>
-<br>
-<a href="/reviews/new">Crear review</a>
 
 <ul>
-    {{#each myServices }}
+    {{#each appliedServices }}
     <ul>
         Titulo: {{title}}
         <br>
@@ -28,18 +25,6 @@
         Estado del servicio: {{status}}
         <br>
 
-        <form action="/services/edit?id={{id}}" method="POST">
-            <label>
-                <button type="submit" name="status" value="Completed"> Completado </button>
-            </label>
-        </form>
-
-        <form action="/services/edit?id={{id}}" method="POST">
-            <label>
-                <button type="submit" name="status" value="Pending"> Pendiente </button>
-            </label>
-        </form>
-        
     </ul>
     <br>
     {{/each}}

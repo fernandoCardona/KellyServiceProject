@@ -21,7 +21,7 @@ module.exports = (app) => {
   app.use("/client", require("./client.routes"));
   app.use("/worker", require("./worker.routes"));
   app.use("/about", require("./about.routes"));
-  app.use("/review", require("./review.routes"));
+  app.use("/reviews", require("./review.routes"));
   app.use("/contact", require("./contact.routes"));
   app.use("/services", require("./service.routes"));
 }
