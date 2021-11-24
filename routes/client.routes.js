@@ -7,7 +7,7 @@ const bcrypt = require("bcrypt")
 
 router.post("/signup", (req, res) => {
 
-  const { fullName, email, password, role } = req.body
+  const { fullName, email, password, role, address, postcode } = req.body
 
   //Comprobamos si existe el usuario
   Client.find({ email })
@@ -25,7 +25,7 @@ router.post("/signup", (req, res) => {
         const hashPass = bcrypt.hashSync(password, salt)
 
 
-        Client.create({ fullName, email, role: 'Client', password: hashPass })
+        Client.create({ fullName, email, role: 'Client', password: hashPass, address, postcode })
           .then(createdUser => res.redirect("/"))
           .catch(err => console.log(err))
       }
@@ -39,10 +39,15 @@ router.post("/signup", (req, res) => {
 
 // LOGIN
 
+// DASHBOARD CLIENTE
+
+router.get("/dashboard", (req, res) => {
+  const currentUser = req.session.currentUser;
+  res.render("client/client-dashboard", currentUser);
+})
+
 router.post("/login", (req, res) => {
-
   const { email, password } = req.body
-
   //Buscamos si existe el usuario
   Client.findOne({ email })
     .then(user => {
@@ -77,13 +82,6 @@ router.get('/logout', (req, res) => {
 
 
 // ----------------------------------------------------------------------------------------------------//
-
-
-
-// DASHBOARD CLIENTE
-
-router.get("/dashboard", (req, res) => res.render("client/client-dashboard"))
-
 
 
 

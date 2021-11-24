@@ -19,6 +19,21 @@ router.get("/", (req, res) => {
 
 })
 
+axios.get("/services/api")
+
+
+router.get("/api", (req, res) => {
+
+    Service.find()
+        .populate('client worker candidates')
+        .then(allServices => {
+            res.json(allServices)
+        })
+        .catch(err => console.log(err))
+
+})
+
+//TODO: Servicios por Código postal de usuario
 
 
 // [CLIENTE] LISTA PROPIA DE SERVICIOS CREADOS 

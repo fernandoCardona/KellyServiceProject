@@ -1,3 +1,32 @@
-<h1>Client Dashboard</h1>
+<section class="dashboard">
+    <nav class="nav-dashboard">
+        <p>{{fullName}} Dashboard Client</p>
+        <div>
+            <span><img src="/images/avatar.png" alt="avatar"></span>
+            <a href="/authWorker/worker-profile-edit">Edit Profile</a>
+            <button class="close-session">log out</button>
+        </div>
+    </nav>
+    <div id="map"></div>
+    <div class="dashboard-content">
+        <div class="map-active-offerts"></div>
+        <div class="resume-active-offerts">
+            {{!-- for each active oferts
+            {{#each workOfferts}}
+            <a href="/libros/detalles/{{_id}}">
+                <li>{{title}} escrito por {{author}}</li>
+            </a>
+            {{/each}} --}}
+        </div>
+        <div class="current-offerts">
+            {{!-- for each active oferts
+            {{#each workOfferts}}
+            <a href="/libros/detalles/{{_id}}">
+                <li>{{title}} escrito por {{author}}</li>
+            </a>
+            {{/each}} --}}
+        </div>
+    </div>
 
-<a href="/services">Lista de servicios</a>
+
+</section>

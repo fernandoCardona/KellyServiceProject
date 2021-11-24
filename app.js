@@ -25,7 +25,7 @@ const projectName = 'kellyServiceProject';
 const capitalized = string => string[0].toUpperCase() + string.slice(1).toLowerCase();
 
 app.locals.title = `${capitalized(projectName)}`;
-
+app.locals.API_KEY= process.env.API_KEY
 // // 👇 Start handling routes here
 
 

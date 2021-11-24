@@ -1,9 +1,4 @@
 <!---///LINK QUE NOS LLEVA AL SIGNUP EN EL HOME//////////-->
-{{!-- <section id="home-worker" class="homeHorker">
-  <p>Worker</p>
-  <a href="/authWorker/worker-signup">Signup</a>
-  <a href="/authWorker/worker-login">Login</a>
-</section> --}}
 <nav class="main-Home-nav">
   <div> <a href="/">
       <p class="logoHome">KellyServices</p>
@@ -15,16 +10,16 @@
       <g>
         <g>
           <path d="M604.267,194.727c4.257,0,7.733-3.644,7.733-7.733v-40.169c0-4.256-3.283-7.733-7.733-7.733H7.733
-			c-4.256,0-7.733,3.644-7.733,7.733v40.169c0,4.256,3.283,7.733,7.733,7.733H604.267z" />
+          c-4.256,0-7.733,3.644-7.733,7.733v40.169c0,4.256,3.283,7.733,7.733,7.733H604.267z" />
           <path d="M0,326.084c0,4.256,3.283,7.733,7.733,7.733h596.533c4.256,0,7.733-3.645,7.733-7.733v-40.169
-			c0-4.284-3.283-7.733-7.733-7.733H7.733c-4.256,0-7.733,3.645-7.733,7.733V326.084z" />
+          c0-4.284-3.283-7.733-7.733-7.733H7.733c-4.256,0-7.733,3.645-7.733,7.733V326.084z" />
           <path d="M0,465.175c0,4.256,3.283,7.733,7.733,7.733h596.533c4.256,0,7.733-3.645,7.733-7.733v-40.169
-			c0-4.256-3.283-7.732-7.733-7.732H7.733c-4.256,0-7.733,3.644-7.733,7.732V465.175z" />
+          c0-4.256-3.283-7.732-7.733-7.732H7.733c-4.256,0-7.733,3.644-7.733,7.732V465.175z" />
         </g>
       </g>
     </svg>
   </div>
-  <ul>
+  <ul id="header-menu">
 
     <li><a href="/">Home</a></li>
     <li><a href="/about">About</a></li>
@@ -42,7 +37,7 @@
   <section class="homeForms">
     <div class="singup-form-Client ">
       <h2>Client Signup</h2>
-      <form action="/client/signup" method="POST">
+      <form action="/client" method="POST">
 
         <label>
           <input type="text" name="fullName" placeholder="Name" required />
@@ -57,10 +52,10 @@
           <input type="text" name="address" placeholder="Address" required />
         </label>
         <label>
-          <input type="number" name="postCode" placeholder="Post code" required />
+          <input type="number" name="postcode" placeholder="Post code" required />
         </label>
 
-        <button type="submit" class="btn btn-Client-login">Signup</button>
+        <button type="submit" id="btn-singup-Client" class="btn btn-Client-login">Signup</button>
 
         {{#if errorMessage}}
         <p class="error">{{errorMessage}}</p>
@@ -71,6 +66,24 @@
         <a href="javascript:void(0)" class="btn-Worker">I´m a worker</a>
       </div>
 
+    </div>
+
+    <div class="login-form-Client">
+      <h2>Login Client</h2>
+      <form action="/client/login" method="POST">
+        <label>
+          <input type="email" name="email" placeholder="email" required />
+        </label>
+        <label>
+          <input type="password" name="password" placeholder="********" />
+        </label>
+        <button type="submit" id="entrarDashBoardCliente" class="btn">Login</button>
+        <div class="cont-links">
+          <a href="javascript:void(0)" class="btnNewRegisterClient"> New Registration</a>
+          <a href="javascript:void(0)" class="jumpLoginWorker">login as worker</a>
+        </div>
+
+      </form>
     </div>
 
     <div class="login-form-Client">

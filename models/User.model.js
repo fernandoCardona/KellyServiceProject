@@ -7,21 +7,19 @@ const userSchema = new Schema({
   password: { type: String, required: true },
   address: String,
   postcode: Number,
-  serviceType:{
-    type: String,
-    enum: ['Limpieza', 'Canguro', 'Jardinería'],
+  serviceType: {
+    type: [String],
+    enum: ['Limpieza', 'Canguro', 'Jardineria'],
   },
   role: {
     type: String,
-    enum: ['Client', 'Worker']
+    enum: ['Client', 'Worker'],
+    required: true
   },
   price: Number,
-  image: {type :String, default:'../public/images/images.png'} //poner imagen default
-},
-
-{
+  image: { type: String, default: '/images/avatar.png' } //poner imagen default
+}, {
   timestamps: true
-
 });
 
 const User = model("User", userSchema);
