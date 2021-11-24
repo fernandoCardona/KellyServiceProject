@@ -16,30 +16,22 @@
     </svg>
   </div>
   <ul>
-    
     <li><a href="/">Home</a></li>
     <li><a href="/about">About</a></li>
     <li><a href="/contact">Contact</a></li>
   </ul>
 </nav>
 <section class="contact">
-<h1>Contact us!</h1>
 
-
+<span>Contact us!</span>
     <form action="/contact" method="POST">
-
-        <label>
-            <input type="text" name="fullName" placeholder="Name" required/>
-        </label>
-        <label> 
-            <input type="email" name="email" placeholder="Email" required/>
-        </label>
-        
-        <label>
-            <textarea name="textareaContact" id="textareaContact" cols="30" rows="10" required></textarea>
-        </label>
-
-        <button type="submit" id="btn-singup-Client" class="btn btn-Client-login">Signup</button>
+        {{!-- <label for="">Email</label> --}}
+        <input type="email" name="email" id="" placeholder="Email">
+        {{!-- <label for="">Subject</label> --}}
+        <input type="text" name="subject" id="" placeholder="Subject">
+        {{!-- <label for="">Message</label> --}}
+        <textarea type="text" name="message" id="" placeholder="Message ..."></textarea>
+        <button type="submit" class="btn">Submit</button>
 
         {{#if errorMessage}}
             <p class="error">{{errorMessage}}</p>

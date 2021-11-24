@@ -1,7 +1,7 @@
 // main.js
 
 function startMap() {
-
+ console.log('dentro de funcion map >>>>>>>>>>>>>>>>><')
     //Mapa
     const ironhackBCN = {
       lat: 41.3977381,

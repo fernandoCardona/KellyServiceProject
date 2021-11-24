@@ -1,12 +1,12 @@
 document.addEventListener(
   "DOMContentLoaded",
   () => {
-    console.log("lab-express-basic-auth JS imported successfully!");
+    console.log("init scripts Front successfully!");
 
 /////////////////////HOME MENU DESPLEGABLE////////////////////////////
 const ham = document.querySelector(".menu");
-const menu = document.querySelector('.main-Home-nav ul');
-const links = menu.querySelectorAll('li');
+const menu = document.querySelector('#header-menu');
+const links = document.querySelectorAll('#header-menu li');
 
 var tl = gsap.timeline({ paused: true });
 
@@ -194,11 +194,13 @@ btnSingupWorker.addEventListener('click', (e) => {
 const entrarDashBoardCliente = document.querySelector('#entrarDashBoardCliente');
 const entrarDashBoardWorker = document.querySelector('#entrarDashBoardWorker');
 entrarDashBoardCliente.addEventListener('click', (e) => {
-    // e.preventDefault();       
+    // e.preventDefault(); 
+    startMap();     
 });
 
 entrarDashBoardWorker.addEventListener('click', (e) => {
     // e.preventDefault(); 
+    startMap(); 
 });
 
 

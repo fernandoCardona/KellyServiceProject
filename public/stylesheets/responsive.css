@@ -20,6 +20,17 @@
     .singup-form-Worker {
         margin-right: 0px;
     }
+    .contact form {
+        width: 50%;
+    }
+    .about {
+        align-items: center;
+        margin: 0 auto;
+    }
+    .about div{
+        width: 70%;
+        margin: 0 auto;
+    }
     
 }
 @media screen and (max-width: 768px) {
@@ -79,6 +90,12 @@
     }
     .homeTitular h1 {
         text-align: center;
+    }
+    .contact form {
+        width: 80%;
+    }
+    .about div{
+        width: 80%;
     }
 }
 @media screen and (max-width: 475px) {
