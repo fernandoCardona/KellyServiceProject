@@ -6,7 +6,7 @@ document.addEventListener(
 /////////////////////HOME MENU DESPLEGABLE////////////////////////////
 const ham = document.querySelector(".menu");
 const menu = document.querySelector('.main-Home-nav ul');
-const links = menu.querySelectorAll('.main-Home-nav ul li');
+const links = menu.querySelectorAll('li');
 
 var tl = gsap.timeline({ paused: true });
 
