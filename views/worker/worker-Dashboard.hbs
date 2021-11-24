@@ -11,12 +11,12 @@
     <div class="dashboard-content">
         <div class="map-active-offerts"></div>
         <div class="resume-active-offerts">
-            {{!-- for each active oferts
-            {{#each workOfferts}}
-                <a href="/libros/detalles/{{_id}}">
-                   <li>{{title}} escrito por {{author}}</li>
+            {{!-- for each active oferts --}}
+            {{#each services}}
+                <a href="/sevices/detais/{{_id}}">
+                   <li>{{title}} {{serviceType}} {{address}} {{client}}</li>
                 </a>
-            {{/each}} --}}
+            {{/each}}
         </div>
         <div class="current-offerts">
             {{!-- for each active oferts

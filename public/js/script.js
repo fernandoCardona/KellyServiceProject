@@ -1,7 +1,10 @@
-document.addEventListener(
+document?.addEventListener(
   "DOMContentLoaded",
   () => {
     console.log("init scripts Front successfully!");
+    if(window.location.pathname !== "/contact" && window.location.pathname !== "/about") {
+
+
 
 /////////////////////HOME MENU DESPLEGABLE////////////////////////////
 const ham = document.querySelector(".menu");
@@ -26,7 +29,7 @@ tl.from(links, {
 
 tl.reverse();
 
-ham.addEventListener('click', () => {
+ham?.addEventListener('click', () => {
 	tl.reversed(!tl.reversed());
 });
 
@@ -50,7 +53,7 @@ const formLoginWorker = document.querySelector('.login-form-Worker');
 const btnSingupClient = document.querySelector('#btn-singup-Client');
 const btnSingupWorker = document.querySelector('#btn-singup-worker');
 //Register loginClient a Register loginWorker
-btnWorker.addEventListener('click', () => {
+btnWorker?.addEventListener('click', () => {
     TweenMax.set(formLoginClient,{opacity:0,display:"none"});
     TweenMax.set(formLoginWorker,{opacity:0,display:"none"});
     TweenMax.set(formWorker,{opacity:0,display:"none"});
@@ -61,7 +64,7 @@ btnWorker.addEventListener('click', () => {
 	 
 });
 //Register loginWorker a Register loginClient
-btnClient.addEventListener('click', () => {
+btnClient?.addEventListener('click', () => {
     TweenMax.set(formLoginClient,{opacity:0,display:"none"});
     TweenMax.set(formLoginWorker,{opacity:0,display:"none"});
     TweenMax.set(formClient,{opacity:0,display:"none"});
@@ -71,7 +74,7 @@ btnClient.addEventListener('click', () => {
             .to(formClient,1, {opacity:1, display:"flex"});
 });
 //LoginCliente a RegisterClient
-btnloginClient.addEventListener('click', () => {
+btnloginClient?.addEventListener('click', () => {
     TweenMax.set(formClient,{opacity:0,display:"none"});
     TweenMax.set(formWorker,{opacity:0,display:"none"});
     TweenMax.set(formLoginClient,{opacity:0,display:"none"});
@@ -81,7 +84,7 @@ btnloginClient.addEventListener('click', () => {
             .to(formLoginClient,1, {opacity:1, display:"flex"});
 });
 //LoginWorker a Register Worker
-btnloginWorker.addEventListener('click', () => {
+btnloginWorker?.addEventListener('click', () => {
     TweenMax.set(formClient,{opacity:0,display:"none"});
     TweenMax.set(formWorker,{opacity:0,display:"none"});
     TweenMax.set(formLoginWorker,{ opacity:0, display:"none"});
@@ -91,7 +94,7 @@ btnloginWorker.addEventListener('click', () => {
             .to(formLoginWorker,1, {opacity:1, display:"flex"});
 });
 //LoginWClient a singup Client
-btnNewRegisterClient.addEventListener('click', () => {
+btnNewRegisterClient?.addEventListener('click', () => {
     TweenMax.set(formLoginClient,{opacity:0,display:"none"});
     TweenMax.set(formLoginWorker,{opacity:0,display:"none"});
     TweenMax.set(formClient,{opacity:0,display:"none"});
@@ -103,7 +106,7 @@ btnNewRegisterClient.addEventListener('click', () => {
             .to(formClient,1, {opacity:1, display:"flex"});
 });
 //LoginCliente jump loginWorker
-jumpLoginWorker.addEventListener('click', () => {
+jumpLoginWorker?.addEventListener('click', () => {
     TweenMax.set(formClient,{opacity:0,display:"none"});
     TweenMax.set(formWorker,{opacity:0,display:"none"});
     TweenMax.set(formLoginWorker,{ opacity:0, display:"none"});
@@ -113,7 +116,7 @@ jumpLoginWorker.addEventListener('click', () => {
             .to(formLoginWorker,1, {opacity:1, display:"flex"});
 });
 //LoginWorker a singup worker
-btnNewRegisterWorker.addEventListener('click', () => {
+btnNewRegisterWorker?.addEventListener('click', () => {
     TweenMax.set(formLoginClient,{opacity:0,display:"none"});
     TweenMax.set(formLoginWorker,{opacity:0,display:"none"});
     TweenMax.set(formWorker,{opacity:0,display:"none"});
@@ -123,7 +126,7 @@ btnNewRegisterWorker.addEventListener('click', () => {
             .to(formWorker,1, {opacity:1, display:"flex"});
 });
 //LoginWorker jump loginClient
-jumpLoginClient.addEventListener('click', () => {
+jumpLoginClient?.addEventListener('click', () => {
     TweenMax.set(formClient,{opacity:0,display:"none"});
     TweenMax.set(formWorker,{opacity:0,display:"none"});
     TweenMax.set(formLoginClient,{opacity:0,display:"none"});;
@@ -133,7 +136,7 @@ jumpLoginClient.addEventListener('click', () => {
             .to(formLoginClient,1, {opacity:1, display:"flex"});
 });
 //btn singupClient a loginClient
-btnSingupClient.addEventListener('click', (e) => {
+btnSingupClient?.addEventListener('click', (e) => {
     e.preventDefault();
     
     const inputs = document.querySelectorAll(".singup-form-Client  input")
@@ -159,7 +162,7 @@ btnSingupClient.addEventListener('click', (e) => {
             .to(formLoginClient,1, {opacity:1, display:"flex"});	 
 });
 //btn singupWorker a loginWorker
-btnSingupWorker.addEventListener('click', (e) => {
+btnSingupWorker?.addEventListener('click', (e) => {
     e.preventDefault();
 
     const inputs = document.querySelectorAll(".singup-form-Worker input");
@@ -191,18 +194,8 @@ btnSingupWorker.addEventListener('click', (e) => {
             .to(formLoginWorker,1, {opacity:1, display:"flex"});	 
 });
 
-const entrarDashBoardCliente = document.querySelector('#entrarDashBoardCliente');
-const entrarDashBoardWorker = document.querySelector('#entrarDashBoardWorker');
-entrarDashBoardCliente.addEventListener('click', (e) => {
-    // e.preventDefault(); 
-    startMap();     
-});
 
-entrarDashBoardWorker.addEventListener('click', (e) => {
-    // e.preventDefault(); 
-    startMap(); 
-});
-
+}
 
 /////////////////////FIN TYPE FORM SELECTION////////////////////////////
 },
