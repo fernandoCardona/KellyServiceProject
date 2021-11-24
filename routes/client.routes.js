@@ -1,13 +1,13 @@
 const router = require("express").Router();
 const Client = require("../models/User.model")
 const bcrypt = require("bcrypt")
-////LOGICA DE SIGNUP////////
 
-// router.get("/client-signup", (req, res) => res.render("authClient/signupClient"))
 
-router.post("/", (req, res) => {
+// SIGNUP
 
-  const { fullName, email, password, role, address, postcode} = req.body
+router.post("/signup", (req, res) => {
+
+  const { fullName, email, password, role, address, postcode } = req.body
 
   //Comprobamos si existe el usuario
   Client.find({ email })
@@ -25,7 +25,7 @@ router.post("/", (req, res) => {
         const hashPass = bcrypt.hashSync(password, salt)
 
 
-        Client.create({ fullName, email, role: 'Client', password: hashPass, address, postcode})
+        Client.create({ fullName, email, role: 'Client', password: hashPass, address, postcode })
           .then(createdUser => res.redirect("/"))
           .catch(err => console.log(err))
       }
@@ -34,11 +34,6 @@ router.post("/", (req, res) => {
     .catch(err => console.log(err))
 
 })
-/////////FIN LOGICA SIGNUP/////////////
-/////////LOGICA LOGIN/////////////
-// router.get("/", (req, res) => {
-//   res.render("index")
-// })
 
 
 
@@ -48,46 +43,46 @@ router.post("/", (req, res) => {
 
 router.get("/dashboard", (req, res) => {
   const currentUser = req.session.currentUser;
-  res.render("client/client-dashboard" , currentUser);  
+  res.render("client/client-dashboard", currentUser);
 })
 
 router.post("/login", (req, res) => {
+  const { email, password } = req.body
+  //Buscamos si existe el usuario
+  Client.findOne({ email })
+    .then(user => {
 
-  
+      //Si el usuario no existe enviamos error
+      if (!user) {
+        res.redirect('/', { errorMessage: 'Usuario no reconocido' })
+        return
+      }
 
-    const { email, password } = req.body
-  
-    //Buscamos si existe el usuario
-    Client.findOne({ email })
-      .then(user => {
-  
-        //Si el usuario no existe enviamos error
-        if (!user) {
-          res.render('index', { errorMessage: 'Usuario no reconocido' })
-          return
-        }
-  
-        //Si la contraseña no coincide con el hash enviamos error
-        if (bcrypt.compareSync(password, user.password) === false) {
-          res.render('index', { errorMessage: 'Contraseña incorrecta' })
-          return
-        }
-  
-        //5. Enganchar el objeto de usuario al req.session
-        req.session.currentUser = user
-        console.log(req.session)
-        ///////////TODO PROFILE CLIENT
-        res.redirect("/client/dashboard")
-      })
-      .catch(err => console.log(err))
-  })
+      //Si la contraseña no coincide con el hash enviamos error
+      if (bcrypt.compareSync(password, user.password) === false) {
+        res.render('/', { errorMessage: 'Contraseña incorrecta' })
+        return
+      }
 
-  
-  router.get('/logout', (req, res) => {
-    req.session.destroy(() => res.redirect('/'))
-  })
+      //5. Enganchar el objeto de usuario al req.session
+      req.session.currentUser = user
+      console.log(req.session)
+      ///////////TODO PROFILE CLIENT
+      res.redirect("/client/dashboard")
+    })
+    .catch(err => console.log(err))
+})
 
 
-/////////LOGICA LOGIN/////////////
+// LOGOUT
+
+router.get('/logout', (req, res) => {
+  req.session.destroy(() => res.redirect('/'))
+})
+
+
+// ----------------------------------------------------------------------------------------------------//
+
+
 
 module.exports = router;

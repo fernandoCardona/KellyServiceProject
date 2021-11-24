@@ -1,0 +1,38 @@
+<h1>Detalles del servicio</h1>
+
+<a href="/services">Volver a la lista de servicios</a>
+
+<h2>{{title}}</h2>
+ 
+ 
+ <p>Descripcion: {{description}}</p>
+        
+<p>Direccion: {{address}}</p>
+
+<p>Codigo postal: {{postcode}}</p>
+
+<p>Tipo de servicio: {{serviceType}}</p>
+        
+<p>Cliente: {{client.fullName}}</p>
+
+<p>Candidatos: {{candidates.0.fullName}}</p>
+
+<p>Trabajador: {{worker}}</p>
+
+
+<p>Estado del servicio: {{status}}</p>
+
+<a href="/services/edit?id={{id}}">Editar</a> <--- solo visible para cliente
+<br>
+<a href="/services/delete?id={{id}}">Borrar</a> <--- solo visible para cliente
+<br>
+{{!-- <a href="#">Aplicar al servicio</a> <--- solo visible para el trabajador --}}
+
+<form action="/services/apply?id={{id}}" method="POST">
+    <label>
+        <button type="submit" name="candidates"> Aplicar al servicio </button> <--- Solo visible para el trabajador
+    </label>
+</form>
+
+
+</form>

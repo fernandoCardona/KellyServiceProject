@@ -1,0 +1,44 @@
+<h1>New service</h1>
+
+<a href="/services">Volver a la lista de servicios</a>
+<br>
+<a href="/services/my-services">Volver a mis servicios</a>
+
+
+<form action="/services/new" method="POST">
+
+    <label> Titulo:
+        <input name="title" type="text">
+    </label>
+    <br>
+    <label> Descripcion:
+        <input name="description" type="text">
+    </label>
+    <br>
+    <label> Direccion:
+        <input name="address" type="text">
+    </label>
+    <br>
+    <label> Codigo postal:
+        <input name="postcode" type="number">
+    </label>
+    <br>
+    <label> Tipo de servicio:
+        <select name="serviceType">
+            <option value="Limpieza">Limpieza</option>
+            <option value="Canguro">Canguro</option>
+            <option value="Jardineria">Jardineria</option>
+
+        </select>
+    </label>
+    <br>
+    {{!-- <label>
+        <input name="candidates" type="">
+    </label> --}}
+
+    {{!-- <label>
+        <input name="client" type="">
+    </label> --}}
+    <button type="submit">Crear servicio</button>
+
+</form>

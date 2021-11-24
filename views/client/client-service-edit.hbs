@@ -1,0 +1,45 @@
+<h1>service edit</h1>
+
+<a href="/services">Volver a la lista de servicios</a>
+<br>
+<a href="/services/my-services">Volver a mis servicios</a>
+
+{{#with service}}
+<form action="/services/edit?id={{id}}" method="POST">
+
+    <label> Titulo:
+        <input name="title" value="{{title}}" type="text" >
+    </label>
+    <br>
+    <label> Descripcion:
+        <input name="description" value="{{description}}" type="text">
+    </label>
+    <br>
+    <label> Direccion:
+        <input name="address" value="{{address}}" type="text">
+    </label>
+    <br>
+    <label> Codigo postal:
+        <input name="postcode" value="{{postcode}}" type="number">
+    </label>
+    <br>
+    <label> Tipo de servicio:
+        <select name="serviceType">
+            <option value="Limpieza">Limpieza</option>
+            <option value="Canguro">Canguro</option>
+            <option value="Jardineria">Jardineria</option>
+
+        </select>
+    </label>
+    {{/with}}
+    <br>
+    {{!-- <label>
+        <input name="candidates" type="">
+    </label> --}}
+
+    {{!-- <label>
+        <input name="client" type="">
+    </label> --}}
+    <button type="submit">Editar servicio</button>
+
+</form>

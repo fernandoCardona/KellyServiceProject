@@ -1,0 +1,38 @@
+<h1>New review</h1>
+
+<a href="/services/my-services">Volver a la lista de servicios</a>
+
+
+
+<form action="/reviews/new" method="POST">
+
+    <label> Comentario:
+        <input name="comment" type="text">
+    </label>
+    <br>
+
+    <label> Rating:
+        <input name="rating" type="number">
+    </label>
+    <br>
+
+    <label>
+        <select name="service">
+        
+            {{#each service}}
+            <option value="{{id}}">{{title}}</option>
+            {{/each}}
+        
+        </select>
+    </label>
+    <br>
+    {{!-- <label>
+        <input name="candidates" type="">
+    </label> --}}
+
+    {{!-- <label>
+        <input name="client" type="">
+    </label> --}}
+    <button type="submit">Crear servicio</button>
+
+</form>
