@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Client = require("../models/User.model")
+const Service = require("../models/Service.model")
 const bcrypt = require("bcrypt")
 
 
@@ -42,8 +43,17 @@ router.post("/signup", (req, res) => {
 // DASHBOARD CLIENTE
 
 router.get("/dashboard", (req, res) => {
-  const currentUser = req.session.currentUser;
-  res.render("client/client-dashboard", currentUser);
+  // const currentUser = req.session.currentUser;
+  // res.render("client/client-dashboard", currentUser);
+
+  const currentUser = req.session.currentUser
+    const id = currentUser._id
+
+    Service.find({ client: id })
+        .populate('client worker candidates')
+        .then(myServices => res.render('client/client-dashboard', { myServices, currentUser }))
+        .catch(err => console.log(err))
+
 })
 
 router.post("/login", (req, res) => {

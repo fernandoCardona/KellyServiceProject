@@ -19,7 +19,7 @@ router.get("/", (req, res) => {
 
 })
 
-axios.get("/services/api")
+
 
 
 router.get("/api", (req, res) => {
@@ -45,7 +45,7 @@ router.get("/my-services", (req, res) => {
 
     Service.find({ client: id })
         .populate('client worker candidates')
-        .then(myServices => res.render('client/client-services', { myServices }))
+        .then(myServices => res.render('client/client-dashboard', { myServices }))
         .catch(err => console.log(err))
 
 })
