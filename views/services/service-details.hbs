@@ -1,38 +1,37 @@
-<h1>Detalles del servicio</h1>
 
-<a href="/services">Volver a la lista de servicios</a>
-
-<h2>{{title}}</h2>
- 
- 
- <p>Descripcion: {{description}}</p>
+<div class="service-details">
+    <div class="cont-details">
         
-<p>Direccion: {{address}}</p>
-
-<p>Codigo postal: {{postcode}}</p>
-
-<p>Tipo de servicio: {{serviceType}}</p>
+        <div class="cont-header-details">
+            <span>Service Details</span>
+        <a href="/services" class="btn back"> Back service list </a> 
+        </div>
+        {{!-- <span>{{title}}</span> --}}
+        <p><span>Descripcion: </span>  {{description}}</p>       
+        <p><span>Direccion: </span>  {{address}}</p>
+        <p><span>Codigo postal: </span>  {{postcode}}</p>
+        <p><span>Tipo de servicio: </span>  {{serviceType}}</p>      
+        <p><span>Cliente: </span>  {{client.fullName}}</p>
+        <p><span>Candidatos: </span>  {{candidates.0.fullName}}</p>
+        <p><span>Trabajador: </span>  {{worker}}</p>
+        <p><span>Estado del servicio: </span>  {{status}}</p>
+        <div class="detail-btn">
+            {{!-- <--- solo visible para cliente --}}
+            <a href="/services/edit?id={{id}}" class="btn edit">Edit</a> 
+            {{!-- <--- solo visible para cliente --}}
+            <a href="/services/delete?id={{id}}" class="btn">Cancel</a>
+        </div>
+         
         
-<p>Cliente: {{client.fullName}}</p>
+        {{!-- <a href="#">Aplicar al servicio</a> <--- solo visible para el trabajador --}}
 
-<p>Candidatos: {{candidates.0.fullName}}</p>
+        <form action="/services/apply?id={{id}}" method="POST">
+            <label>
+                {{!-- <--- Solo visible para el trabajador --}}
+                <button type="submit" name="candidates" class="btn edit"> Aplicar al servicio </button> 
+            </label>
+        </form>
+    </div>
+    
 
-<p>Trabajador: {{worker}}</p>
-
-
-<p>Estado del servicio: {{status}}</p>
-
-<a href="/services/edit?id={{id}}">Editar</a> <--- solo visible para cliente
-<br>
-<a href="/services/delete?id={{id}}">Borrar</a> <--- solo visible para cliente
-<br>
-{{!-- <a href="#">Aplicar al servicio</a> <--- solo visible para el trabajador --}}
-
-<form action="/services/apply?id={{id}}" method="POST">
-    <label>
-        <button type="submit" name="candidates"> Aplicar al servicio </button> <--- Solo visible para el trabajador
-    </label>
-</form>
-
-
-</form>
+</div>

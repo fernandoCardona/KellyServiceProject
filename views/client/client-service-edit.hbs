@@ -1,45 +1,52 @@
-<h1>service edit</h1>
+<div class="service-details">
+    <div class="cont-details">
+        <div class="cont-header-details extra-edit">
+            <span>Edit service</span>
+            <div>
+                <a href="/services" class="btn back">Back service lists</a>
+                <a href="/services/my-services" class="btn back">Back service</a>
+            </div>
+        </div>
 
-<a href="/services">Volver a la lista de servicios</a>
-<br>
-<a href="/services/my-services">Volver a mis servicios</a>
 
-{{#with service}}
-<form action="/services/edit?id={{id}}" method="POST">
+        {{#with service}}
+        <form action="/services/edit?id={{id}}" method="POST" class="edit-services-form">
 
-    <label> Titulo:
-        <input name="title" value="{{title}}" type="text" >
-    </label>
-    <br>
-    <label> Descripcion:
-        <input name="description" value="{{description}}" type="text">
-    </label>
-    <br>
-    <label> Direccion:
-        <input name="address" value="{{address}}" type="text">
-    </label>
-    <br>
-    <label> Codigo postal:
-        <input name="postcode" value="{{postcode}}" type="number">
-    </label>
-    <br>
-    <label> Tipo de servicio:
-        <select name="serviceType">
-            <option value="Limpieza">Limpieza</option>
-            <option value="Canguro">Canguro</option>
-            <option value="Jardineria">Jardineria</option>
+            <label>
+                <p>Tittle: </p> 
+                <input name="title" value="{{title}}" type="text" >
+            </label>
+            <label>
+                <p>Description: </p> 
+                <input name="description" value="{{description}}" type="text">
+            </label>
+            <label>
+                <p>Address: </p> 
+                <input name="address" value="{{address}}" type="text">
+            </label>
+            <label>
+                <p>Post code: </p> 
+                <input name="postcode" value="{{postcode}}" type="number">
+            </label>
+            <label><p>Service Type:</p> 
+                <select name="serviceType">
+                    <option value="Limpieza">Cleaning services</option>
+                    <option value="Canguro">Babysitting services</option>
+                    <option value="Jardineria">Landscaping services</option>
+                </select>
+            </label>
+            {{/with}}
+            
+            {{!-- <label>
+                <input name="candidates" type="">
+            </label> --}}
 
-        </select>
-    </label>
-    {{/with}}
-    <br>
-    {{!-- <label>
-        <input name="candidates" type="">
-    </label> --}}
+            {{!-- <label>
+                <input name="client" type="">
+            </label> --}}
+            <button type="submit" class="btn edit">Edit service</button>
 
-    {{!-- <label>
-        <input name="client" type="">
-    </label> --}}
-    <button type="submit">Editar servicio</button>
+        </form>
 
-</form>
+    </div>
+</div>

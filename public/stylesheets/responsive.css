@@ -31,7 +31,25 @@
         width: 70%;
         margin: 0 auto;
     }
-    
+    /* dashboard */
+    .dashboard-content {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 15px;
+        margin: 0 auto;
+    }
+    .create-service {
+        width: 97%;
+        order:2;
+    }
+    .current-active-services {
+        width: 97%;
+        order:1;
+    }
+    /*Fin dashboard */
 }
 @media screen and (max-width: 768px) {
     .main-Home-nav div.menu {
@@ -75,6 +93,19 @@
     .singup-form-Client, .singup-form-Worker {
         width: 100%;
     }
+    /* service-details */
+    .service-details .cont-details {
+        width: 80%;
+    }
+    .cont-details form {
+        margin: 0 auto;
+    }
+    /* fin service-details */
+
+    .edit-services-form {
+        width: 92%;
+        margin-left: 0px  !important;
+    }
 }
 @media screen and (max-width: 550px) {
     main {
@@ -97,6 +128,27 @@
     .about div{
         width: 80%;
     }
+    /* dashboard */
+    .current-active-services li {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin-bottom: 10
+    }
+    /* Fin dashboard */
+    .service-details .cont-header-details.extra-edit {height: auto;}
+    .service-details .cont-header-details.extra-edit div {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .service-details .cont-header-details {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 10px;
+   }
 }
 @media screen and (max-width: 475px) {
 
@@ -169,7 +221,7 @@
     
      
     .btn {
-        min-height: 40px;
+        /* min-height: 40px; */
         width: -webkit-fill-available;
         margin-bottom: 15px;
     }

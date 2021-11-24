@@ -10,7 +10,7 @@
     <div id="map"></div>
     <div class="dashboard-content">
         <div class="create-service">
-            <p>New review</p>
+            <span>Create service</span>
             {{!-- <a href="/services">Volver a la lista de servicios</a>
             <a href="/services/my-services">Volver a mis servicios</a> --}}
             <form action="/services/new" method="POST">
@@ -28,7 +28,7 @@
                     <input name="postcode" type="number" placeholder="Post Code" class="postCode">
                 </label>
                 <label> 
-                    <p>Tipo de servicio:</p>
+                    <span>Tipo de servicio:</span>
                     <select name="serviceType">
                         <option value="Limpieza">Cleaning services</option>
                         <option value="Canguro">Babysitting services</option>
@@ -47,12 +47,13 @@
             </form>
         </div>
         <div class="current-active-services">
-            <p>Current services</p>
+            <span>Current services</span>
             {{!-- //for each active oferts --}}
             {{#each myServices}}
-            <a href="/services/details/{{_id}}">
-                <li>{{title}} {{serviceType}} {{address}} {{client}}</li>
-            </a>
+            <li>
+                <a href="/services/details/{{_id}}"><strong><p>Service Type:</p></strong> {{serviceType}}<p>Address:</p>{{address}} </a>
+                <a href="/services/delete?id={{id}}" class="btn">Cancel</a> 
+            </li>
             {{/each}}
         </div>
     </div>
