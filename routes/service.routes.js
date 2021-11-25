@@ -61,6 +61,7 @@ router.get("/my-services", checkRoles("Client"), (req, res) => {
 
 
 // [TRABAJADOR] LISTA PROPIA DE SERVICIOS APLICADOS
+//MOVIDO A WORKER ROUTE
 
 // router.get("/applied-services", checkRoles("Worker"), (req, res) => {
 
@@ -186,12 +187,39 @@ router.post("/apply", checkRoles("Worker"), (req, res) => {
     const { id } = req.query
     const { candidates } = req.body
 
+
     Service.findByIdAndUpdate(id, { $push: { candidates: userId } }, { new: true })
         .populate("candidates")
         .then(newCandidate => res.redirect(`/services/details/${id}`))
         .catch(err => console.log(err))
 
 })
+
+router.post("/unapply", checkRoles("Worker"), (req, res) => {
+
+    const currentUser = req.session.currentUser
+    const userId = currentUser._id
+
+    const { id } = req.query
+    const { candidates } = req.body
+
+    //DONE PULL PARA SACAR EL PUSH
+
+    Service.findByIdAndUpdate(id, { $pull: { candidates: userId } }, { new: true })
+        .populate("candidates")
+        .then(newCandidate => res.redirect(`/worker/dashboard`))
+        .catch(err => console.log(err))
+
+})
+
+
+
+
+
+
+
+
+
 
 
 

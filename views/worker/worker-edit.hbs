@@ -1,44 +1,46 @@
 <div id="form" class="editFormProfiles">
   <h2>Edit Worker Profile</h2>
 
-  <form action="/worker" method="POST" enctype="multipart/form-data">
+  <p> <a href="/worker/dashboard">Volver al Dashboard</a>
+
+  <form action="/worker/edit?id={{id}}" method="POST" enctype="multipart/form-data">
+    <label>
+      <input type="text" name="fullName" value="{{fullName}}" required />
+    </label>
+    <label>
+      <input type="email" name="email" value="{{email}}" required/>
+    </label>
+    <label>
+      <input type="password" name="password" placeholder="********" required/>
+    </label>
+    <label>
+      <input type="text" name="address" value="{{address}}" required/>
+    </label>
+    <label>
+      <input type="number" name="postcode" value="{{postcode}}" required />
+    </label>
+    <label>
+      <p>Profile Image:</p>
+      <input type="file" name="image" placeholder="Add image" />
+    </label>
+    <div class="worker-checkbox">
+      <p><strong>Services offered:</strong></p>
       <label>
-        <input type="text" name="fullName" placeholder="Name" required/>
-      </label>
-      <label> 
-        <input type="email" name="email" placeholder="Email" required/>
+        <input type="checkbox" name="serviceType" value="Limpieza" />
+        <p>Cleaning services</p>
       </label>
       <label>
-        <input type="password" name="password" placeholder="********" required/>
+        <input type="checkbox" name="serviceType" value="Canguro" />
+        <p>Babysitting services</p>
       </label>
       <label>
-        <input type="text" name="address" placeholder="Address" required/>
+        <input type="checkbox" name="serviceType" value="Jardineria" />
+        <p>Landscaping services</p>
       </label>
-      <label>
-        <input type="number" name="postcode" placeholder="Post code" required/>
-      </label>
-      <label>
-        <p>Profile Image:</p>
-        <input type="file" name="image" placeholder="Add image" required/>
-      </label>
-      <div class="worker-checkbox">
-        <p><strong>Services offered:</strong></p>
-        <label> 
-          <input type="checkbox" name="serviceType" value="Limpieza" /> 
-          <p>Cleaning services</p>
-        </label>
-        <label> 
-          <input type="checkbox" name="serviceType" value="Canguro" />
-          <p>Babysitting services</p>
-        </label>
-        <label> 
-          <input type="checkbox" name="serviceType" value="Jardineria" />
-          <p>Landscaping services</p>
-        </label>
-      </div>
-      <button type="submit" id="btn-singup-worker" class="btn btn-Client-login" >Submit</button>
-      {{#if errorMessage}}
-        <p class="error">{{errorMessage}}</p>
-      {{/if}}
-    </form>
+    </div>
+    <button type="submit" class="btn btn-Client-login">Submit</button>
+    {{#if errorMessage}}
+    <p class="error">{{errorMessage}}</p>
+    {{/if}}
+  </form>
 </div>

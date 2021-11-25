@@ -3,6 +3,7 @@
     <nav class="nav-dashboard">
         <p>{{fullName}} Dashboard Worker</p>
         <div>
+<<<<<<< HEAD
             <span>
                 <img src="/images/avatar.png" alt="avatar">
                 </span>
@@ -10,6 +11,11 @@
             <a href="/worker/logout"> 
                 <button class="close-session">log out</button>
             </a>
+=======
+            <span><img src="/images/avatar.png" alt="avatar"></span>
+            <a href="/worker/edit">Edit Profile</a>
+           <a href="/worker/logout"> <button class="close-session">log out</button></a>
+>>>>>>> f3f857182295c7927e77edb3eb47fa75ebf90fa5
         </div>
     </nav>
     <div id="map"></div>
@@ -29,7 +35,11 @@
             {{#each appliedServices }}
             <li>
                 <a href="/services/details/{{_id}}"><strong><p>Service Type:</p></strong> {{serviceType}}<p>Address:</p>{{address}} Client: {{client.fullName}}</a>
-                <a href="/services/delete?id={{id}}" class="btn">Cancel</a> 
+
+            <form action="/services/unapply?id={{id}}" method="POST">
+                <button class="btn edit" type="submit" name="candidates"> Cancel </button>
+            </form>
+
             </li>
             
             {{/each}}

@@ -104,4 +104,35 @@ router.get('/logout', (req, res) => {
 
 
 
+
+// PROFILE EDIT 
+
+router.get('/edit', checkRoles("Client"), fileUploader.single('image'), (req, res) => {
+
+
+  const currentUser = req.session.currentUser;
+  const id = currentUser._id
+
+  Client.findById(id)
+    .then(worker => res.render("client/client-edit", worker))
+    .catch(err => console.log(err))
+
+})
+
+// fileUploader.single('image'),
+
+
+router.post("/edit", checkRoles("Client"), fileUploader.single('image'), (req, res) => {
+
+  const currentUser = req.session.currentUser;
+  const id = currentUser._id
+
+  const { fullName, email, address, postcode, image } = req.body
+  
+  Worker.findByIdAndUpdate(id, { fullName, email, address, postcode, image: req.file.path }, { new: true })
+    .then(worker => res.redirect(`/client/dashboard`))
+    .catch(err => console.log(err))
+})
+
+
 module.exports = router;
