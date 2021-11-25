@@ -99,7 +99,7 @@ router.get('/logout', (req, res) => {
 
 router.get('/api', (req, res) => {
 
-  Worker.find()
+  Worker.find({role: "Worker"})
     .then(allWorkers => {
       res.json(allWorkers)
     })
