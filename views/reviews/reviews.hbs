@@ -1,1 +1,17 @@
 <h1>Reviews</h1>
+
+<ul>
+    {{#each allReviews }}
+    <ul>
+        Comentario: {{comment}}
+        <br>
+        Valoracion: {{rating}}
+        <br>
+        Servicio: {{service.title}}
+        <br>
+
+        <a href="/services/details/{{id}}">Ver detalles</a>
+    </ul>
+    <br>
+    {{/each}}
+</ul>

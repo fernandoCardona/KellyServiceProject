@@ -28,15 +28,38 @@
         </div>
          
         
-        {{!-- <a href="#">Aplicar al servicio</a> <--- solo visible para el trabajador --}}
+<p>Cliente: {{client.fullName}}</p>
 
-        <form action="/services/apply?id={{id}}" method="POST">
-            <label>
-                {{!-- <--- Solo visible para el trabajador --}}
-                <button type="submit" name="candidates" class="btn edit"> Aplicar al servicio </button> 
-            </label>
-        </form>
-    </div>
-    
+<p>Candidatos:
+    {{#each candidates}}
+        {{fullName}},
+    {{/each}}</p>
 
-</div>
+<p>Trabajador: {{worker.fullName}}</p>
+
+
+<p>Estado del servicio: {{status}}</p>
+
+
+
+{{#if ../isClient }}
+<a href="/services/edit?id={{id}}">Editar</a> <--- solo visible para cliente
+<br>
+<a href="/services/delete?id={{id}}">Borrar</a> <--- solo visible para cliente
+<br>
+<a href="/reviews/new">Crear review</a>
+{{/if}}
+
+
+
+{{#if ../isWorker }}
+<form action="/services/apply?id={{id}}" method="POST">
+    <label>
+        <button type="submit" name="candidates"> Aplicar al servicio </button> <--- Solo visible para el trabajador
+    </label>
+</form>
+{{/if}}
+
+{{/with}}
+<br>
+

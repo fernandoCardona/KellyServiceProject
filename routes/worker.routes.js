@@ -1,4 +1,8 @@
 const router = require("express").Router();
+
+const { isLoggedIn, checkRoles } = require("../middlewares")
+const { capitalizeText, checkMongoID, isClient, isWorker } = require("../utils");
+
 const Worker = require("../models/User.model")
 const bcrypt = require("bcrypt");
 const Service = require("../models/Service.model")
@@ -89,6 +93,31 @@ router.get('/logout', (req, res) => {
 
 
 // ----------------------------------------------------------------------------------------------------//
+
+
+// API LISTA TRABAJADORES 
+
+router.get('/api', (req, res) => {
+
+  Worker.find()
+    .then(allWorkers => {
+      res.json(allWorkers)
+    })
+    .catch(err => console.log(err))
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
