@@ -57,11 +57,16 @@ router.get("/dashboard", checkRoles("Worker"), (req, res) => {
       //APPLIED
       Service.find({ candidates: id })
         .populate('client worker candidates')
-        .then(appliedServices => res.render('worker/worker-Dashboard', { appliedServices, services, currentUser }))
+        .then(appliedServices => 
+          
+          Worker.find()
+            .then(user => res.render('worker/worker-Dashboard', { appliedServices, services, currentUser, user })
+          ))
         .catch(err => console.log(err))
 
     })
     .catch(err => console.log(err))
+
 
 })
 
