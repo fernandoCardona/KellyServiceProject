@@ -1,7 +1,7 @@
 <div id="form">
   <h2>Edit Client Profile</h2>
 
-  <form action="/client" method="POST">
+  <form action="/client/edit" method="POST">
 
       <label>
         <input type="text" name="fullName" placeholder="Name" required/>
@@ -20,10 +20,10 @@
       </label>
       <label>
         <p>Profile Image:</p>
-        <input type="file" name="image" placeholder="Add image" required/>
+        <input type="file" name="image" placeholder="Add image" />
       </label>
 
-      <button type="submit" id="btn-singup-Client" class="btn btn-Client-login">Submit</button>
+      <button type="submit"  class="btn btn-Client-login">Submit</button>
 
       {{#if errorMessage}}
         <p class="error">{{errorMessage}}</p>

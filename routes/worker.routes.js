@@ -45,12 +45,21 @@ router.post("/signup", (req, res) => {
 router.get("/dashboard", checkRoles("Worker"), (req, res) => {
 
   const currentUser = req.session.currentUser;
-
-  Service.find()
+  const id = currentUser._id
+  //TODOS LOS SERVICIOS
+  //hacer que este find busque la lista en las que no ha aplicado al trabajo
+  Service.find({ candidates: { $ne: id } })
     .populate('client worker candidates')
     .then(services => {
       // console.log("--------------->", services)
-      res.render("worker/worker-dashboard", { services, currentUser })
+
+
+      //APPLIED
+      Service.find({ candidates: id })
+        .populate('client worker candidates')
+        .then(appliedServices => res.render('worker/worker-Dashboard', { appliedServices, services, currentUser }))
+        .catch(err => console.log(err))
+
     })
     .catch(err => console.log(err))
 
@@ -105,7 +114,7 @@ router.get('/logout', (req, res) => {
 
 router.get('/api', (req, res) => {
 
-  Worker.find({role: "Worker"})
+  Worker.find({ role: "Worker" })
     .then(allWorkers => {
       res.json(allWorkers)
     })
@@ -115,8 +124,35 @@ router.get('/api', (req, res) => {
 
 
 
+// PROFILE EDIT 
+
+router.get('/edit', checkRoles("Worker"), fileUploader.single('image'), (req, res) => {
 
 
+  const currentUser = req.session.currentUser;
+  const id = currentUser._id
+
+  console.log("eeeeeeeeeeeeeeeeee", id)
+  Worker.findById(id)
+    .then(worker => res.render("worker/worker-edit", worker))
+    .catch(err => console.log(err))
+
+})
+
+// fileUploader.single('image'),
+
+
+router.post("/edit", checkRoles("Worker"), fileUploader.single('image'), (req, res) => {
+
+  const currentUser = req.session.currentUser;
+  const id = currentUser._id
+
+  const { fullName, email, address, postcode, serviceType, image } = req.body
+  console.log("eeeeeeeeeeeeeeeeee", req.body)
+  Worker.findByIdAndUpdate(id, { fullName, email, address, postcode, serviceType, image: req.file.path }, { new: true })
+    .then(worker => res.redirect(`/worker/dashboard`))
+    .catch(err => console.log(err))
+})
 
 
 

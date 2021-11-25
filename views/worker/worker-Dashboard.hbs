@@ -4,7 +4,7 @@
         <p>{{fullName}} Dashboard Worker</p>
         <div>
             <span><img src="/images/avatar.png" alt="avatar"></span>
-            <a href="/authWorker/worker-profile-edit">Edit Profile</a>
+            <a href="/worker/edit">Edit Profile</a>
            <a href="/worker/logout"> <button class="close-session">log out</button></a>
         </div>
     </nav>
@@ -24,8 +24,12 @@
             <span>Active offerts</span>
             {{#each appliedServices }}
             <li>
-                <a href="/services/details/{{_id}}"><strong><p>Service Type:</p></strong> {{serviceType}}<p>Address:</p>{{address}} Client: {{client}}</a>
-                <a href="/services/delete?id={{id}}" class="btn">Cancel</a> 
+                <a href="/services/details/{{_id}}"><strong><p>Service Type:</p></strong> {{serviceType}}<p>Address:</p>{{address}} Client: {{client.fullName}}</a>
+
+            <form action="/services/unapply?id={{id}}" method="POST">
+                <button class="btn edit" type="submit" name="candidates"> Cancel </button>
+            </form>
+
             </li>
             
             {{/each}}
