@@ -1,11 +1,18 @@
 <h1>Services</h1>
+{{#with allServices}}
 
-<p><a href="/services/my-services">Mis servicios creados</a> <---- esta opcion sera solo visible para el cliente</p>
-<p> <a href="/services/applied-services">Servicios a los que he aplicado</a> <---- esta opcion sera solo visible para el trabajador</p>
+    {{#if ../isClient }}
+        <p><a href="/services/my-services">Mis servicios creados</a> <---- esta opcion sera solo visible para el cliente</p>
+        <p> <a href="/client/dashboard">Dashboard Cliente</a> <---- esta opcion sera solo visible para el cliente</p>
+    {{/if}}
 
-<p> <a href="/worker/dashboard">Dashboard Trabajador</a> <---- esta opcion sera solo visible para el trabajador</p>
-<p> <a href="/client/dashboard">Dashboard Cliente</a> <---- esta opcion sera solo visible para el cliente</p>
 
+    {{#if ../isWorker }}
+        <p> <a href="/services/applied-services">Servicios a los que he aplicado</a> <---- esta opcion sera solo visible para el trabajador</p>
+        <p> <a href="/worker/dashboard">Dashboard Trabajador</a> <---- esta opcion sera solo visible para el trabajador</p>
+    {{/if}}
+
+{{/with}}
 
 
 <ul>
@@ -23,9 +30,12 @@
         <br>
         Cliente: {{client.fullName}}
         <br>
-        Candidatos: {{candidates.0.fullName}}
+        Candidatos: 
+            {{#each candidates}}
+                {{fullName}},
+            {{/each}}
         <br>
-        Trabajador: {{worker}}
+        Trabajador: {{worker.fullName}}
         <br>
         Estado del servicio: {{status}}
         <br>

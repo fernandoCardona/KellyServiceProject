@@ -4,10 +4,11 @@
 <br>
 <a href="/services/new">Crear servicio</a>
 <br>
-<a href="/reviews/new">Crear review</a>
+
 
 <ul>
     {{#each myServices }}
+    <br>
     <ul>
         Titulo: {{title}}
         <br>
@@ -21,10 +22,23 @@
         <br>
         Cliente: {{client.fullName}}
         <br>
-        Candidatos: {{candidates.0.fullName}}
+        Candidatos:
+        {{#each candidates}}
+        {{fullName}},
+        {{/each}}
         <br>
-        Trabajador: {{worker}}
-        <br>
+        Trabajador: {{worker.fullName}}
+        <form action="/services/edit?id={{id}}" method="POST">
+            <label>
+                <select name="worker">
+                    <option>Seleccionar</option>
+                    {{#each candidates}}
+                    <option value="{{id}}">{{fullName}}</option>
+                    {{/each}}
+                </select>
+                <button type="submit">Asignar trabajador</button>
+            </label>
+        </form>
         Estado del servicio: {{status}}
         <br>
 
@@ -39,7 +53,7 @@
                 <button type="submit" name="status" value="Pending"> Pendiente </button>
             </label>
         </form>
-        
+    <a href="/reviews/new">Crear review</a>
     </ul>
     <br>
     {{/each}}

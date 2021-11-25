@@ -1,4 +1,8 @@
 const router = require("express").Router();
+const { isLoggedIn, checkRoles } = require("../middlewares")
+const { capitalizeText, checkMongoID, isClient, isWorker } = require("../utils");
+
+
 const { findByIdAndUpdate } = require("../models/Service.model");
 const Service = require("../models/Service.model")
 const User = require("../models/User.model")
@@ -12,14 +16,17 @@ router.get("/", (req, res) => {
     Service.find()
         .populate('client worker candidates')
         .then(allServices => {
-            // console.log("--------------->", allServices)
-            res.render("services/services", { allServices })
+            res.render("services/services", { 
+                allServices,
+                loggedUser: req.session.currentUser,
+                isClient: isClient(req.session.currentUser),
+                isWorker: isWorker(req.session.currentUser)
+             })
         })
         .catch(err => console.log(err))
 
 })
 
-axios.get("/services/api")
 
 
 router.get("/api", (req, res) => {
@@ -33,12 +40,13 @@ router.get("/api", (req, res) => {
 
 })
 
-//TODO: Servicios por Código postal de usuario
+//TODO: Servicios por Código postal de usuario, 
+//buscar servicio que coincida el codigo postal del usuario logeado con el del servicio creado
 
 
 // [CLIENTE] LISTA PROPIA DE SERVICIOS CREADOS 
 
-router.get("/my-services", (req, res) => {
+router.get("/my-services", checkRoles("Client"), (req, res) => {
 
     const currentUser = req.session.currentUser
     const id = currentUser._id
@@ -59,7 +67,7 @@ router.get("/applied-services", (req, res) => {
     const currentUser = req.session.currentUser
     const id = currentUser._id
 
-    Service.find({ candidates: [id] })
+    Service.find({ candidates: id })
         .populate('client worker candidates')
         .then(appliedServices => res.render('worker/worker-services', { appliedServices }))
         .catch(err => console.log(err))
@@ -84,7 +92,12 @@ router.get("/details/:id", (req, res) => {
 
     Service.findById(id)
         .populate('client worker candidates')
-        .then(service => res.render("services/service-details", service))
+        .then(service => res.render("services/service-details", {
+            loggedUser: req.session.currentUser,
+            isClient: isClient(req.session.currentUser),
+            isWorker: isWorker(req.session.currentUser),
+            service
+        }))
         .catch(err => console.log(err))
 
 })
@@ -98,7 +111,7 @@ router.get("/details/:id", (req, res) => {
 
 // CREACION DE SERVICIO
 
-router.get('/new', (req, res) => {
+router.get('/new', checkRoles("Client"), (req, res) => {
 
     User.find()
         .then(allUsers => {
@@ -108,7 +121,7 @@ router.get('/new', (req, res) => {
 })
 
 
-router.post('/new', (req, res) => {
+router.post('/new', checkRoles("Client"), (req, res) => {
 
     const currentUser = req.session.currentUser
     const id = currentUser._id
@@ -127,7 +140,7 @@ router.post('/new', (req, res) => {
 
 // EDICION DE SERVICIO
 
-router.get("/edit", (req, res) => {
+router.get("/edit", checkRoles("Client"), (req, res) => {
 
     // const currentUser = req.session.currentUser
     // const id = currentUser._id
@@ -183,31 +196,16 @@ router.post("/apply", (req, res) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
 // DELETE SERVICE
 
-router.get("/delete", (req, res) => {
+router.get("/delete", checkRoles("Client"), (req, res) => {
     const { id } = req.query
 
     Service.findByIdAndDelete(id)
-        .then(info => res.redirect("/services"))
+        .then(info => res.redirect("/client/dashboard"))
         .catch(err => console.log(err))
 
 })
-
-
-
-
-
 
 
 

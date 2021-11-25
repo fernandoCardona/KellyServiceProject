@@ -5,7 +5,7 @@ const reviewSchema = new Schema({
 
     comment: { type: String, required: true },
     rating: { type: Number, required: true },
-    service: { type: Schema.Types.ObjectId, ref: 'Service', required: true }
+    service: { type: Schema.Types.ObjectId, ref: 'Service'}
 });
 
 const Review = model("Review", reviewSchema);
