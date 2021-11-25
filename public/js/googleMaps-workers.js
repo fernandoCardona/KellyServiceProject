@@ -46,6 +46,7 @@ function workerMarkers(map) {
 
     axios.get("/worker/api")
     .then((res) => {
+        console.log(res)
     const addresses = res.data.map(service => service.address)
     addresses.forEach( address =>{
         GMaps.geocode({
@@ -68,7 +69,8 @@ function workerMarkers(map) {
             }
         }
         });
-    });
+    })
+    .catch(err => console.log(err))
 
     new google.maps.Marker({
         position: userCenter,

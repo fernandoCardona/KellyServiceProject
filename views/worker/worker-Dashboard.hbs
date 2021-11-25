@@ -1,11 +1,15 @@
 
 <section class="dashboard">
     <nav class="nav-dashboard">
-        <p>{{user.fullName}} Dashboard Worker</p>
+        <p>{{currentUser.fullName}} Dashboard Worker</p>
         <div>
-            <span><img src="/images/avatar.png" alt="avatar"></span>
+            <span>
+                <img src="{{currentUser.image}}" alt="avatar">
+            </span>
             <a href="/worker/edit">Edit Profile</a>
-           <a href="/worker/logout"> <button class="close-session">log out</button></a>
+            <a href="/worker/logout"> 
+                <button class="close-session">log out</button>
+            </a>
         </div>
     </nav>
     <div id="map"></div>

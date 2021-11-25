@@ -1,9 +1,9 @@
 <section class="dashboard">
     <nav class="nav-dashboard">
-        <p>{{fullName}} Dashboard Client</p>
+        <p>{{currentUser.fullName}} Dashboard Client</p>
         <div>
             <span>
-                <img src="/images/avatar.png" alt="avatar">
+                <img src="{{currentUser.image}}" alt="avatar">
             </span>
             <a href="/client/edit">Edit Profile</a>
            <a href="/client/logout"><button class="close-session">log out</button></a>
