@@ -2,7 +2,9 @@
     <nav class="nav-dashboard">
         <p>{{fullName}} Dashboard Client</p>
         <div>
-            <span><img src="/images/avatar.png" alt="avatar"></span>
+            <span>
+                <img src="/images/avatar.png" alt="avatar">
+            </span>
             <a href="/client/edit">Edit Profile</a>
            <a href="/client/logout"><button class="close-session">log out</button></a>
         </div>
@@ -11,8 +13,6 @@
     <div class="dashboard-content">
         <div class="create-service">
             <span>Create service</span>
-            {{!-- <a href="/services">Volver a la lista de servicios</a>
-            <a href="/services/my-services">Volver a mis servicios</a> --}}
             <form action="/services/new" method="POST">
 
                 <label> 

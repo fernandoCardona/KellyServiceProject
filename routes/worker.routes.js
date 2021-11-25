@@ -4,6 +4,7 @@ const { isLoggedIn, checkRoles } = require("../middlewares")
 const { capitalizeText, checkMongoID, isClient, isWorker } = require("../utils");
 
 const Worker = require("../models/User.model")
+const fileUploader = require('../config/cloudinary.config');
 const bcrypt = require("bcrypt");
 const Service = require("../models/Service.model")
 
