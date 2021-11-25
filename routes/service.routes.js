@@ -62,17 +62,17 @@ router.get("/my-services", checkRoles("Client"), (req, res) => {
 
 // [TRABAJADOR] LISTA PROPIA DE SERVICIOS APLICADOS
 
-router.get("/applied-services", checkRoles("Worker"), (req, res) => {
+// router.get("/applied-services", checkRoles("Worker"), (req, res) => {
 
-    const currentUser = req.session.currentUser
-    const id = currentUser._id
+//     const currentUser = req.session.currentUser
+//     const id = currentUser._id
 
-    Service.find({ candidates: id })
-        .populate('client worker candidates')
-        .then(appliedServices => res.render('worker/worker-Dashboard', { appliedServices }))
-        .catch(err => console.log(err))
+//     Service.find({ candidates: id })
+//         .populate('client worker candidates')
+//         .then(appliedServices => res.render('worker/worker-Dashboard', { appliedServices }))
+//         .catch(err => console.log(err))
 
-})
+// })
 
 
 

@@ -4,6 +4,7 @@ const { isLoggedIn, checkRoles } = require("../middlewares")
 const { capitalizeText, checkMongoID, isClient, isWorker } = require("../utils");
 
 const Worker = require("../models/User.model")
+const fileUploader = require('../config/cloudinary.config');
 const bcrypt = require("bcrypt");
 const Service = require("../models/Service.model")
 
@@ -46,11 +47,21 @@ router.get("/dashboard", checkRoles("Worker"), (req, res) => {
 
   const currentUser = req.session.currentUser;
 
+  //TODOS LOS SERVICIOS
   Service.find()
     .populate('client worker candidates')
     .then(services => {
       // console.log("--------------->", services)
-      res.render("worker/worker-dashboard", { services, currentUser })
+
+
+
+        const id = currentUser._id
+        //APPLIED
+        Service.find({ candidates: id })
+            .populate('client worker candidates')
+            .then(appliedServices => res.render('worker/worker-Dashboard', { appliedServices, services, currentUser }))
+            .catch(err => console.log(err))
+    
     })
     .catch(err => console.log(err))
 
