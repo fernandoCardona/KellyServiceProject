@@ -4,7 +4,8 @@
         
         <div class="cont-header-details">
             <span>Service Details</span>
-        <a href="/services" class="btn back"> Back service list </a> 
+        <a href="/services/my-services" class="btn back"> Back dashboard client </a> 
+        <a href="/worker/dashboard" class="btn back"> Back Dashboard worker </a> 
         </div>
         {{!-- <span>{{title}}</span> --}}
         <p><span>Descripcion: </span>  {{description}}</p>       
@@ -12,8 +13,12 @@
         <p><span>Codigo postal: </span>  {{postcode}}</p>
         <p><span>Tipo de servicio: </span>  {{serviceType}}</p>      
         <p><span>Cliente: </span>  {{client.fullName}}</p>
-        <p><span>Candidatos: </span>  {{candidates.0.fullName}}</p>
-        <p><span>Trabajador: </span>  {{worker}}</p>
+        <p><span>Candidatos: </span> 
+        {{#each candidates}}
+                {{fullName}},
+            {{/each}}
+        </p>
+        <p><span>Trabajador: </span>  {{worker.fullName}}</p>
         <p><span>Estado del servicio: </span>  {{status}}</p>
         <div class="detail-btn">
             {{!-- <--- solo visible para cliente --}}

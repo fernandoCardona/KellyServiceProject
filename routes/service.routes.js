@@ -59,9 +59,9 @@ router.get("/applied-services", (req, res) => {
     const currentUser = req.session.currentUser
     const id = currentUser._id
 
-    Service.find({ candidates: [id] })
+    Service.find({ candidates: id })
         .populate('client worker candidates')
-        .then(appliedServices => res.render('worker/worker-services', { appliedServices }))
+        .then(appliedServices => res.render('worker/worker-Dashboard', { appliedServices }))
         .catch(err => console.log(err))
 
 })

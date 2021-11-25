@@ -624,6 +624,139 @@ input[type="checkbox"]:after {
 
 
 /* Fin Dashboard Client */
+/* Dashboard Worker */
+.dashboard-content.worker-dasboard {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap:15px;
+    margin: 0 auto;
+}
+.resume-offerts {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    border: 2px solid white;
+    border-radius: 4px;
+    /* background-color: rgba(255,255,255,0.8); */
+    margin: 0 auto;
+    margin-top: 15px;
+    padding: 10px;
+    color: white;
+    order: 2;
+    
+}
+.resume-offerts span {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.resume-offerts  li{
+    width: 95%;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 2px 5px;
+    -webkit-transition: .4s ease-out;
+    -moz-transition: .4s ease-out;
+    -o-transition: .4s ease-out;
+    transition: .4s ease-out
+}
+.resume-offerts  li:hover {
+    background-color: rgba(255,255,255,0.8);
+    border: 1px solid white;
+    border-radius: 4px;
+}
+.resume-offerts li a{
+    width: 100%;
+    height: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    color: white;
+    gap: 10px;
+    text-decoration: none;
+}
+.resume-offerts li a:hover{
+    color: #4800FF;
+}
+.worker-active-offerts {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    border: 2px solid white;
+    border-radius: 4px;
+    /* background-color: rgba(255,255,255,0.8); */
+    margin: 0 auto;
+    margin-top: 15px;
+    padding: 10px;
+    color: white;
+    order: 2;
+}
+.worker-active-offerts {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    border: 2px solid white;
+    border-radius: 4px;
+    /* background-color: rgba(255,255,255,0.8); */
+    margin: 0 auto;
+    margin-top: 15px;
+    padding: 10px;
+    color: white;
+    order: 2;
+}
+.worker-active-offerts span {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.worker-active-offerts li {
+    width: 95%;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 2px 5px;
+    -webkit-transition: .4s ease-out;
+    -moz-transition: .4s ease-out;
+    -o-transition: .4s ease-out;
+    transition: .4s ease-out
+}
+.worker-active-offerts li:hover {
+    background-color: rgba(255,255,255,0.8);
+    border: 1px solid white;
+    border-radius: 4px;
+}
+.worker-active-offerts li a {
+    width: 100%;
+    height: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    color: white;
+    gap: 10px;
+    text-decoration: none;
+}
+.worker-active-offerts li a:hover {
+    color: #4800FF;
+}
+/* Dashboard Worker */
 /* service-details */
 .service-details {
     width: 100vw;

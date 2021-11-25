@@ -23,9 +23,12 @@
         <br>
         Cliente: {{client.fullName}}
         <br>
-        Candidatos: {{candidates.0.fullName}}
+        Candidatos: 
+        {{#each candidates}}
+                {{fullName}},
+        {{/each}}
         <br>
-        Trabajador: {{worker}}
+        Trabajador: {{worker.fullName}}
         <br>
         Estado del servicio: {{status}}
         <br>

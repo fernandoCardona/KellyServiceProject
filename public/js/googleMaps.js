@@ -14,12 +14,13 @@ function startMap() {
       }
     );
   
-    ////// Markers
-    placeMarkers(map)
-  
     //GeoLocation
     setUserCenter(map)
     
+    ////// Markers
+    placeMarkers(map)
+    ////Workers
+    workerMarkers(map)
     //Extras Google maps
   
 
@@ -27,25 +28,108 @@ function startMap() {
 
 function placeMarkers(map) {
 
+
   axios.get("/services/api")
   .then((res) => {
-    console.log(res)  
+    const addresses = res.data.map(service => service.address)
+    console.log(addresses) 
+    addresses.forEach( address =>{
+      GMaps.geocode({
+        address: address,
+        callback: function(results, status){
+          if(status=='OK'){
+            var latlng = results[0].geometry.location;
+            console.log({
+              lat: latlng.lat(),
+              lng: latlng.lng()
+            })
+            new google.maps.Marker({
+              position: {
+                lat: latlng.lat(),
+                lng: latlng.lng()
+              },
+              map,
+              title: "Hello World!",
+            });
+          }
+        }
+      });
+    }) 
     
   })
   .catch(error => {
     console.log(error)
-    res.render('message', { errorMessage: "Marker no ha podido ser enviado" })
+    //res.render('message', { errorMessage: "Marker no ha podido ser enviado" })
   })
-  
-  map.addMarker({
-    lat: -12.043333,
-    lng: -77.028333,
-    title: 'Lima',
-    click: function(e){
-      alert('You clicked in this marker');
-    }
-  });
 
+//   let serviceInfo = ""
+//   data.reverse().forEach(service => {
+//       serviceInfo += ""
+                        
+ 
+  
+//       map.addMarker({
+//         lat: -12.043333,
+//         lng: -77.028333,
+//         title: 'Lima',
+//         click: function(e){
+//           alert('You clicked in this marker');
+//         }
+//       });
+//  });
+
+}
+
+function workerMarkers(map) {
+
+  axios.get("/worker/api")
+  .then((res) => {
+    const addresses = res.data.map(service => service.address)
+    console.log(addresses) 
+    addresses.forEach( address =>{
+      GMaps.geocode({
+        address: address,
+        callback: function(results, status){
+          if(status=='OK'){
+            var latlng = results[0].geometry.location;
+            console.log({
+              lat: latlng.lat(),
+              lng: latlng.lng()
+            })
+            new google.maps.Marker({
+              position: {
+                lat: latlng.lat(),
+                lng: latlng.lng()
+              },
+              map,
+              title: "Hello World!",
+            });
+          }
+        }
+      });
+    }) 
+    
+  })
+  .catch(error => {
+    console.log(error)
+    //res.render('message', { errorMessage: "Marker no ha podido ser enviado" })
+  })
+
+//   let serviceInfo = ""
+//   data.reverse().forEach(service => {
+//       serviceInfo += ""
+                        
+ 
+  
+//       map.addMarker({
+//         lat: -12.043333,
+//         lng: -77.028333,
+//         title: 'Lima',
+//         click: function(e){
+//           alert('You clicked in this marker');
+//         }
+//       });
+//  });
 
 }
 
