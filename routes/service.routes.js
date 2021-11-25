@@ -62,7 +62,7 @@ router.get("/my-services", checkRoles("Client"), (req, res) => {
 
 // [TRABAJADOR] LISTA PROPIA DE SERVICIOS APLICADOS
 
-router.get("/applied-services", (req, res) => {
+router.get("/applied-services", checkRoles("Worker"), (req, res) => {
 
     const currentUser = req.session.currentUser
     const id = currentUser._id
@@ -129,7 +129,7 @@ router.post('/new', checkRoles("Client"), (req, res) => {
     const { title, description, address, postcode, serviceType, candidates, client, worker, status } = req.body
 
     Service.create({ title, description, address, postcode, serviceType, candidates, client: id, worker, status })
-        .then(newService => res.redirect("/services"))
+        .then(newService => res.redirect("/client/dashboard"))
         .catch(err => console.log(err))
 })
 
@@ -158,7 +158,7 @@ router.get("/edit", checkRoles("Client"), (req, res) => {
         .catch(err => console.log(err))
 })
 
-router.post("/edit", (req, res) => {
+router.post("/edit", checkRoles("Client"), (req, res) => {
 
     const { id } = req.query
     const { title, description, address, postcode, serviceType, candidates, client, worker, status } = req.body
@@ -178,7 +178,7 @@ router.post("/edit", (req, res) => {
 
 // Para añadir trabajador al array de candidatos (pushear)
 // findByIdAndUpdate(ID, {$push: {field: value}})
-router.post("/apply", (req, res) => {
+router.post("/apply", checkRoles("Worker"), (req, res) => {
 
     const currentUser = req.session.currentUser
     const userId = currentUser._id

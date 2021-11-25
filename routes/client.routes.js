@@ -41,11 +41,11 @@ router.post("/signup", (req, res) => {
 
 
 
-// LOGIN
+
 
 // DASHBOARD CLIENTE
 
-router.get("/dashboard", (req, res) => {
+router.get("/dashboard", checkRoles("Client"), (req, res) => {
   // const currentUser = req.session.currentUser;
   // res.render("client/client-dashboard", currentUser);
 
@@ -58,6 +58,11 @@ router.get("/dashboard", (req, res) => {
         .catch(err => console.log(err))
 
 })
+
+
+
+// LOGIN
+
 
 router.post("/login", (req, res) => {
   const { email, password } = req.body

@@ -39,10 +39,10 @@ router.post("/signup", (req, res) => {
     .catch(err => console.log(err))
 })
 
-//LOGIN
+
 // DASHBOARD WORKER
 
-router.get("/dashboard", (req, res) => {
+router.get("/dashboard", checkRoles("Worker"), (req, res) => {
 
   const currentUser = req.session.currentUser;
 
@@ -55,6 +55,12 @@ router.get("/dashboard", (req, res) => {
     .catch(err => console.log(err))
 
 })
+
+
+
+
+//LOGIN
+
 
 router.post("/login", (req, res) => {
 
@@ -99,7 +105,7 @@ router.get('/logout', (req, res) => {
 
 router.get('/api', (req, res) => {
 
-  Worker.find()
+  Worker.find({role: "Worker"})
     .then(allWorkers => {
       res.json(allWorkers)
     })
