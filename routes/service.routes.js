@@ -143,11 +143,7 @@ router.post('/new', checkRoles("Client"), (req, res) => {
 
 router.get("/edit", checkRoles("Client"), (req, res) => {
 
-    // const currentUser = req.session.currentUser
-    // const id = currentUser._id
-    // console.log('>>>>>>>>>>>>>>>>>>>', currentUser)
-    // console.log('---------------------------->', id)
-
+    
     const { id } = req.query
 
     Service.findById(id)
@@ -190,7 +186,7 @@ router.post("/apply", checkRoles("Worker"), (req, res) => {
 
     Service.findByIdAndUpdate(id, { $push: { candidates: userId } }, { new: true })
         .populate("candidates")
-        .then(newCandidate => res.redirect(`/services/details/${id}`))
+        .then(newCandidate => res.redirect("/worker/dashboard"))
         .catch(err => console.log(err))
 
 })
