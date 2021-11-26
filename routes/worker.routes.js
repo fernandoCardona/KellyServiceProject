@@ -58,11 +58,11 @@ router.get("/dashboard", checkRoles("Worker"), (req, res) => {
       //APPLIED
       Service.find({ candidates: id })
         .populate('client worker candidates')
-        .then(appliedServices => 
-          
+        .then(appliedServices =>
+
           Worker.find()
             .then(user => res.render('worker/worker-Dashboard', { appliedServices, services, currentUser, user })
-          ))
+            ))
         .catch(err => console.log(err))
 
     })
@@ -127,6 +127,10 @@ router.get('/api', (req, res) => {
     .catch(err => console.log(err))
 })
 
+
+router.get('/api/img', (req, res) => {
+  res.json(req.session.currentUser.image)
+})
 
 
 
