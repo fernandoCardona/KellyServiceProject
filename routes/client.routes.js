@@ -2,9 +2,9 @@ const router = require("express").Router();
 const { isLoggedIn, checkRoles } = require("../middlewares")
 const { capitalizeText, checkMongoID, isClient, isWorker } = require("../utils");
 
-const Client = require("../models/User.model")
-const fileUploader = require('../config/cloudinary.config');
-const Service = require("../models/Service.model")
+const Client = require("/models/User.model")
+const fileUploader = require('/config/cloudinary.config');
+const Service = require("/models/Service.model")
 const bcrypt = require("bcrypt")
 
 
@@ -129,7 +129,7 @@ router.post("/edit", checkRoles("Client"), fileUploader.single('image'), (req, r
 
   const { fullName, email, address, postcode, image } = req.body
   
-  Worker.findByIdAndUpdate(id, { fullName, email, address, postcode, image: req.file.path }, { new: true })
+  Client.findByIdAndUpdate(id, { fullName, email, address, postcode, image: req.file.path }, { new: true })
     .then(worker => res.redirect(`/client/dashboard`))
     .catch(err => console.log(err))
 })

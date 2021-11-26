@@ -108,9 +108,9 @@ textarea {
     padding: 0.2em 0;
 }
 
-a {
+/* a {
     color: #00B7FF;
-}
+} */
 body {
     width: 100%;
     height: 100%;
@@ -314,6 +314,7 @@ main {
  }
 .btn {
     width: -webkit-fill-available;
+    min-width: 200px;
     height: 44px;
     font-family: 'Roboto Medium';
     font-size: 16px;
@@ -616,6 +617,7 @@ input[type="checkbox"]:after {
 .current-active-services a p {font-weight: 500; color: #4800FF;} */
 .current-active-services a.btn {
     width: fit-content;
+    min-width: fit-content;
     height: 20px;
     text-decoration: none;
     background-color: #FF0038;
@@ -786,7 +788,9 @@ input[type="checkbox"]:after {
 }
 .worker-active-offerts li button.btn {
     width: fit-content;
-    height: 20px;
+    max-width: 150px;
+    min-width: fit-content;
+    height: 25px;
     text-decoration: none;
     background-color: #FF0038;
     color: white !important;
@@ -854,7 +858,7 @@ input[type="checkbox"]:after {
 
 .service-details a.btn {
     width: fit-content;
-    height: 20px;
+    height: 25px;
     text-decoration: none;
     background-color: #FF0038;
     padding: 1px 15px;
@@ -961,7 +965,7 @@ input[type="checkbox"]:after {
 }
 .cont-header-profile a.btn {
     width: fit-content;
-    height: 20px;
+    height: 25px;
     text-decoration: none;
     background-color: #FF0038;
     padding: 1px 15px;
