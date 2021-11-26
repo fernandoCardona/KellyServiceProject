@@ -1,46 +1,54 @@
 <div id="form" class="editFormProfiles">
-  <h2>Edit Worker Profile</h2>
-
-  <p> <a href="/worker/dashboard">Volver al Dashboard</a>
-
-  <form action="/worker/edit?id={{id}}" method="POST" enctype="multipart/form-data">
-    <label>
-      <input type="text" name="fullName" value="{{fullName}}" required />
-    </label>
-    <label>
-      <input type="email" name="email" value="{{email}}" required/>
-    </label>
-    <label>
-      <input type="password" name="password" placeholder="********" required/>
-    </label>
-    <label>
-      <input type="text" name="address" value="{{address}}" required/>
-    </label>
-    <label>
-      <input type="number" name="postcode" value="{{postcode}}" required />
-    </label>
-    <label>
-      <p>Profile Image:</p>
-      <input type="file" name="image" placeholder="Add image" />
-    </label>
-    <div class="worker-checkbox">
-      <p><strong>Services offered:</strong></p>
-      <label>
-        <input type="checkbox" name="serviceType" value="Limpieza" />
-        <p>Cleaning services</p>
-      </label>
-      <label>
-        <input type="checkbox" name="serviceType" value="Canguro" />
-        <p>Babysitting services</p>
-      </label>
-      <label>
-        <input type="checkbox" name="serviceType" value="Jardineria" />
-        <p>Landscaping services</p>
-      </label>
+  <div class="cont-profile"> 
+    <div class="cont-header-profile">
+      <span>Edit Worker Profile</span>
+      <a href="/worker/dashboard" class="btn back"> Back dashboard</a>
     </div>
-    <button type="submit" class="btn btn-Client-login">Submit</button>
-    {{#if errorMessage}}
-    <p class="error">{{errorMessage}}</p>
-    {{/if}}
-  </form>
+    <form action="/worker/edit?id={{id}}" method="POST" enctype="multipart/form-data">
+      <label>
+        <p>Fullname: </p>
+        <input type="text" name="fullName" value="{{fullName}}" required />
+      </label>
+      <label>
+        <p>Email: </p>
+        <input type="email" name="email" value="{{email}}" required/>
+      </label>
+      <label>
+        <p>Password: </p>
+        <input type="password" name="password" placeholder="********" required/>
+      </label>
+      <label>
+        <p>Address: </p>
+        <input type="text" name="address" value="{{address}}" required/>
+      </label>
+      <label>
+        <p>Post code: </p>
+        <input type="number" name="postcode" value="{{postcode}}" required />
+      </label>
+      <label>
+        <p>Profile Image:</p>
+        <input type="file" name="image" placeholder="Add image" />
+      </label>
+      <div class="worker-checkbox">
+        <br>
+        <span> Services offered: </span>
+        <label>
+          <input type="checkbox" name="serviceType" value="Limpieza" />
+          <p>Cleaning services</p>
+        </label>
+        <label>
+          <input type="checkbox" name="serviceType" value="Canguro" />
+          <p>Babysitting services</p>
+        </label>
+        <label>
+          <input type="checkbox" name="serviceType" value="Jardineria" />
+          <p>Landscaping services</p>
+        </label>
+      </div>
+      <button type="submit" class="btn edit btn-Client-login">Submit</button>
+      {{#if errorMessage}}
+      <p class="error">{{errorMessage}}</p>
+      {{/if}}
+    </form>
+  </div>
 </div>

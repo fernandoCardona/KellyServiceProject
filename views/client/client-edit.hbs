@@ -1,32 +1,39 @@
-<div id="form">
-  <h2>Edit Client Profile</h2>
-
-  <form action="/client/edit" method="POST" enctype="multipart/form-data">
-
+<div id="form" class="editFormProfiles">
+  <div class="cont-profile"> 
+    <div class="cont-header-profile">
+      <span>Edit Worker Profile</span>
+      <a href="/client/dashboard" class="btn back"> Back dashboard</a>
+    </div>
+    <form action="/client/edit?id={{id}}" method="POST" enctype="multipart/form-data">
       <label>
-        <input type="text" name="fullName" value="{{fullName}}" required/>
+        <p>Fullname: </p>
+        <input type="text" name="fullName" value="{{fullName}}" required />
       </label>
-      <label> 
+      <label>
+        <p>Email: </p>
         <input type="email" name="email" value="{{email}}" required/>
       </label>
       <label>
-        <input type="password" name="password" placeholder="********" required />
+        <p>Password: </p>
+        <input type="password" name="password" placeholder="********" required/>
       </label>
       <label>
+        <p>Address: </p>
         <input type="text" name="address" value="{{address}}" required/>
       </label>
       <label>
-        <input type="number" name="postcode" value="{{postcode}}" required/>
+        <p>Post code: </p>
+        <input type="number" name="postcode" value="{{postcode}}" required />
       </label>
       <label>
         <p>Profile Image:</p>
         <input type="file" name="image" placeholder="Add image" />
       </label>
-
-      <button type="submit"  class="btn btn-Client-login">Submit</button>
-
+      
+      <button type="submit" class="btn edit btn-Client-login">Submit</button>
       {{#if errorMessage}}
-        <p class="error">{{errorMessage}}</p>
+      <p class="error">{{errorMessage}}</p>
       {{/if}}
     </form>
+  </div>
 </div>

@@ -24,22 +24,22 @@ const getCurrentLocation = async () => {
 }
 
 function startMap() {
-    //Mapa
-    const map = new google.maps.Map(
-        document.getElementById('map'),
-        {
-            zoom: 10,
-            center: undefined
-        }
-    );
-
-    //GeoLocation
-    setUserCenter(map)
-
-    ////Workers
-    workerMarkers(map)
-    //Extras Google maps
-
+        //Mapa
+       const map = new google.maps.Map(
+         document.getElementById('map'),
+         {
+           zoom: 11,
+           center: undefined
+         }
+       );
+     
+       //GeoLocation
+       setUserCenter(map)
+      
+       ////Workers
+       workerMarkers(map)
+       //Extras Google maps
+     
 }
 
 function workerMarkers(map) {

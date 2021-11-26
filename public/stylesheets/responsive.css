@@ -41,11 +41,13 @@
         gap: 15px;
         margin: 0 auto;
     }
-    .create-service {
+    .create-service,
+    .resume-offerts{
         width: 97%;
         order:2;
     }
-    .current-active-services {
+    .current-active-services, 
+    .worker-active-offerts{
         width: 97%;
         order:1;
     }
@@ -105,6 +107,23 @@
     .edit-services-form {
         width: 92%;
         margin-left: 0px  !important;
+    }
+    .editFormProfiles .cont-profile {
+        width: 80%;
+  }
+}
+@media screen and (max-width: 600px) {
+    .create-service,
+    .resume-offerts{
+        width: 96%;
+    }
+    .current-active-services, 
+    .worker-active-offerts{
+        width: 96%;
+    }
+    .editFormProfiles .cont-profile form {
+        width: 94%;
+        margin-left: 0px !important;
     }
 }
 @media screen and (max-width: 550px) {
@@ -171,6 +190,29 @@
     .singup-form-Worker label p {
         display:none;
     
+    }
+    .create-service,
+    .resume-offerts{
+        width: 94%;
+    }
+    .current-active-services, 
+    .worker-active-offerts{
+        width: 94%;
+    }
+    .create-service form label input {
+        width: 95%;
+   }
+   .cont-header-profile {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    }
+    .cont-header-profile a.btn.back {
+       margin-top:10px
     }
 
 }

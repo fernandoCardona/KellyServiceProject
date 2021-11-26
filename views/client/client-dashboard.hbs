@@ -9,6 +9,7 @@
            <a href="/client/logout"><button class="close-session">log out</button></a>
         </div>
     </nav>
+     <h1>Available Workers</h1>
     <div id="map"></div>
     <div class="dashboard-content">
         <div class="create-service">
@@ -51,7 +52,11 @@
             {{!-- //for each active oferts --}}
             {{#each myServices}}
             <li>
-                <a href="/services/details/{{_id}}"><strong><p>Service Type:</p></strong> {{serviceType}}<p>Address:</p>{{address}} </a>
+                <a href="/services/details/{{_id}}">
+                    <p><strong>Service Type: </strong> {{serviceType}}</p>
+                    <p><strong>Address: </strong> {{address}}</p>
+                    <p><strong>Client: </strong> {{client.fullName}}</p>
+                </a>
                 <a href="/services/delete?id={{id}}" class="btn">Cancel</a> 
             </li>
             {{/each}}
